@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/cc98ac45-c645-49f7-aefb-8627b64fe70c" alt="NTUMods logo" width="75">
+  <img src="./static/logo.png" alt="NTUMods logo" width="75">
   <h1>NTUMods</h1>
 </div>
 
