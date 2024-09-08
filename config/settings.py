@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$3jipo&3h^me1d9zq3m$67t!x-m3443s$=f_!z&*7j++7c1sb5'
+SECRET_KEY = getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [getenv('ALLOWED_HOSTS')]
 
 
 # Application definition
@@ -75,8 +79,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': getenv('PGDATABASE'),
+        'USER': getenv('PGUSER'),
+        'PASSWORD': getenv('PGPASSWORD'),
+        'HOST': getenv('PGHOST'),
+        'PORT': getenv('PGPORT', 5432),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 
