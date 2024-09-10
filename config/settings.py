@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
 
+    'apps.common',
     'apps.courses',
     'apps.optimizer',
     'apps.scraper',
