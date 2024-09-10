@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram
+
+from apps.courses.models import Course, CourseIndex, CourseProgram
 
 
 class CoursePartialSerializer(serializers.ModelSerializer):

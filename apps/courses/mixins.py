@@ -1,5 +1,3 @@
-from django.db.models import Value
-from django.db.models.functions import Concat
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import BaseFilterBackend, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
