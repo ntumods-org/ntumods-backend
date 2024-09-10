@@ -5,7 +5,7 @@ from rest_framework.filters import BaseFilterBackend, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
-from apps.courses.models import Course
+from apps.courses.models import Course, CourseProgram
 
 
 '''
@@ -53,6 +53,47 @@ class CustomCodeAndNameSearch(BaseFilterBackend):
 
 
 '''
+When query parameter `program__icontains` is provided, filter courses by program.
+'''
+class CustomProgramSearch(BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        program_qp = request.query_params.get('program__icontains', None)
+        if not program_qp:
+            return queryset
+        programs_list = program_qp.split(';') if program_qp else None
+        programs_list = [int(id.strip()) for id in programs_list if id.strip()]
+        queryset = queryset.filter(programs__in=programs_list).distinct()
+        return queryset
+
+
+'''
+When query parameter `year` is provided, filter courses by year.
+'''
+class CustomYearSearch(BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        year_qp = request.query_params.get('year', None)
+        if not year_qp or year_qp not in ['1', '2', '3', '4', '5']:
+            return queryset
+        year_qp = int(year_qp)
+        course_programs = CourseProgram.objects.filter(year=year_qp).values_list('id', flat=True)
+        queryset = queryset.filter(programs__in=course_programs).distinct()
+        return queryset
+
+
+'''
+When query parameter `level__in` is provided, filter courses by level.
+Allows multiple levels separated by semicolons, e.g. `level__in=1;2;3`.
+'''
+class CustomLevelMultipleFilter(BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        level_qp = request.query_params.get('level__in', None)
+        if not level_qp:
+            return queryset
+        levels = level_qp.split(';')
+        return queryset.filter(level__in=levels)
+
+
+'''
 Custom mixin class to be used in CourseListView.
 Applied various query parameters for filtering, ordering, and searching.
 Applied custom pagination class.
@@ -62,6 +103,9 @@ class CourseQueryParamsMixin:
         DjangoFilterBackend,
         OrderingFilter,
         CustomCodeAndNameSearch,
+        CustomProgramSearch,
+        CustomYearSearch,
+        CustomLevelMultipleFilter,
     ]
     filterset_fields = {
         'code': ['icontains'],
