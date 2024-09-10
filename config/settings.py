@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'corsheaders',
-    'rest_framework',
     'django_filters',
+    'drf_yasg',
+    'rest_framework',
 
     'apps.courses',
     'apps.optimizer',
