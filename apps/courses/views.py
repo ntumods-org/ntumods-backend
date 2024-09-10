@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
+from apps.courses.mixins import CourseQueryParamsMixin
 from apps.courses.models import Course, CourseIndex
 from apps.courses.serializers import (
     CoursePartialSerializer,
@@ -9,7 +10,7 @@ from apps.courses.serializers import (
 )
 
 
-class CourseListView(ListAPIView):
+class CourseListView(CourseQueryParamsMixin, ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CoursePartialSerializer
 
