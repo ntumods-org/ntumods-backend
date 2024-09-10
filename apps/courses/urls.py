@@ -1,9 +1,15 @@
 from django.urls import path
-from django.http import HttpResponse
+from apps.courses.views import (
+    CourseListView,
+    CourseDetailView,
+    CourseIndexDetailView,
+)
 
 
 app_name = 'courses'
 
 urlpatterns = [
-    path('', lambda request: HttpResponse('Hello, world!'), name='index'),
+    path('', CourseListView.as_view(), name='course-list'),
+    path('<str:code>/', CourseDetailView.as_view(), name='course-detail'),
+    path('index/<str:index>/', CourseIndexDetailView.as_view(), name='course-index-detail'),
 ]
