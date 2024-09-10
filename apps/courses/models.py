@@ -164,3 +164,28 @@ class CourseIndex(models.Model):
 
     def __str__(self):
         return f'<Index {self.index} for course {self.course.code}>'
+
+
+class CourseProgram(models.Model):
+    '''
+    CourseProgram and Course are in a many-to-many relationship.
+    CourseProgram instances also include minor programs and bachelor degree program with year, examples:
+    - Mathematical And Computer Sciences Year 4
+    - Minor in Computing And Data Analysis
+
+    `name` is the name of the program, e.g. 'Accountancy (GA) Year 1'.
+    `value` is based on the value attribute in the HTML option tag of the html, e.g. 'ACC;GA;1;F'.
+    `last_updated` is the last date and time the CourseProgram instance was updated.
+    `year` is the year of the program, derived from the value attribute, may be empty if not applicable (such as minor programs).
+    '''
+    name = models.CharField(max_length=300, unique=True)
+    value = models.CharField(max_length=300, unique=True)
+    last_updated = models.DateTimeField(auto_now=True)
+    courses = models.ManyToManyField(Course, related_name='programs')
+    year = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Course Programs'
+
+    def __str__(self):
+        return f'<CourseProgram #{self.id}: {self.name}>'
