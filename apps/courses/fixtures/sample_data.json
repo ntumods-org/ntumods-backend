@@ -1,0 +1,1292 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "superuser",
+            "email": "superuser@mail.com",
+            "password": "pbkdf2_sha256$390000$jNGuKW2q0YnDal94Qqv9c3$xtLogB9SNuXhZVYnu1hatPzydj2m/MF2OtYT6LIbGFU=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 1,
+        "fields": {
+            "code": "MH1101",
+            "name": "CALCULUS II",
+            "academic_units": 4,
+            "last_updated": "2023-12-10T05:15:38.820Z",
+            "exam_schedule": "2024-04-2909:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 2,
+        "fields": {
+            "code": "MH1201",
+            "name": "LINEAR ALGEBRA II",
+            "academic_units": 4,
+            "last_updated": "2023-12-10T05:15:39.044Z",
+            "exam_schedule": "2024-04-3009:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 3,
+        "fields": {
+            "code": "MH1301",
+            "name": "DISCRETE MATHEMATICS",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:39.283Z",
+            "exam_schedule": "2024-05-0909:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^MON^1530-1720^LT23^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 4,
+        "fields": {
+            "code": "MH1403",
+            "name": "ALGORITHMS & COMPUTING",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:39.503Z",
+            "exam_schedule": "2024-05-0709:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^FRI^0930-1120^SPMS-LT1^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 5,
+        "fields": {
+            "code": "MH1803",
+            "name": "CALCULUS FOR PHYSICS",
+            "academic_units": 4,
+            "last_updated": "2023-12-10T05:15:39.571Z",
+            "exam_schedule": "2024-04-3013:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^TUE^1430-1620^SPMS-LT3^;LEC/STUDIO^LE^WED^1430-1520^SPMS-LT2^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 6,
+        "fields": {
+            "code": "MH1810",
+            "name": "MATHEMATICS 1",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:39.667Z",
+            "exam_schedule": "2024-05-0713:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^TUE^1230-1420^LT13^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 7,
+        "fields": {
+            "code": "MH1811",
+            "name": "MATHEMATICS 2",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:39.758Z",
+            "exam_schedule": "2024-04-2909:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 8,
+        "fields": {
+            "code": "MH1812",
+            "name": "DISCRETE MATHEMATICS",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:40.448Z",
+            "exam_schedule": "2024-05-0913:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 9,
+        "fields": {
+            "code": "MH1820",
+            "name": "INTRODUCTION TO PROBABILITY & STATISTICAL METHODS",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:40.827Z",
+            "exam_schedule": "2024-05-0813:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 10,
+        "fields": {
+            "code": "MH2220",
+            "name": "ALGEBRA I",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:41.006Z",
+            "exam_schedule": "2024-05-0809:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^TUE^1130-1320^MAS EC RM1^;TUT^T1^THU^1530-1620^MAS EC RM1^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 11,
+        "fields": {
+            "code": "MH2801",
+            "name": "COMPLEX METHODS FOR THE SCIENCES",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:41.053Z",
+            "exam_schedule": "2024-05-0713:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^TUE^0930-1120^SPMS-LT2^"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 12,
+        "fields": {
+            "code": "MH2811",
+            "name": "MATHEMATICS II",
+            "academic_units": 3,
+            "last_updated": "2023-12-10T05:15:41.144Z",
+            "exam_schedule": "2024-05-0209:00-11:00OOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "common_information": "LEC/STUDIO^LE^WED^0830-1020^LT19^"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 1,
+        "fields": {
+            "course": 1,
+            "index": "70501",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T1^TUE^1630-1720^SPMS-TR+13^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^TUE^1630-1720^SPMS-TR+13^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 2,
+        "fields": {
+            "course": 1,
+            "index": "70502",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T2^TUE^1630-1720^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^TUE^1630-1720^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 3,
+        "fields": {
+            "course": 1,
+            "index": "70503",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T3^WED^0930-1020^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^WED^0930-1020^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 4,
+        "fields": {
+            "course": 1,
+            "index": "70504",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T4^WED^0930-1020^SPMS-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T4^WED^0930-1020^SPMS-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 5,
+        "fields": {
+            "course": 1,
+            "index": "70505",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T5^WED^1130-1220^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T5^WED^1130-1220^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 6,
+        "fields": {
+            "course": 1,
+            "index": "70506",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T6^WED^1130-1220^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T6^WED^1130-1220^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 7,
+        "fields": {
+            "course": 1,
+            "index": "70507",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T7^WED^1330-1420^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T7^WED^1330-1420^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 8,
+        "fields": {
+            "course": 1,
+            "index": "70508",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T8^WED^1330-1420^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T8^WED^1330-1420^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 9,
+        "fields": {
+            "course": 1,
+            "index": "70509",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T9^WED^1530-1620^SPMS-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T9^WED^1530-1620^SPMS-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 10,
+        "fields": {
+            "course": 1,
+            "index": "70510",
+            "information": "LEC/STUDIO^LE^THU^0930-1120^LT3^;LEC/STUDIO^LE^TUE^1330-1420^LT23^;TUT^T10^WED^1530-1620^SPMS-TR+18^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T10^WED^1530-1620^SPMS-TR+18^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 11,
+        "fields": {
+            "course": 2,
+            "index": "70516",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T1^TUE^1030-1120^SPMS-TR+13^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^TUE^1030-1120^SPMS-TR+13^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 12,
+        "fields": {
+            "course": 2,
+            "index": "70517",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T2^TUE^1030-1120^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^TUE^1030-1120^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 13,
+        "fields": {
+            "course": 2,
+            "index": "70518",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T3^TUE^1230-1320^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^TUE^1230-1320^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 14,
+        "fields": {
+            "course": 2,
+            "index": "70519",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T4^TUE^1230-1320^SPMS-TR+16^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T4^TUE^1230-1320^SPMS-TR+16^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 15,
+        "fields": {
+            "course": 2,
+            "index": "70520",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T5^WED^0930-1020^SPMS-TR+16^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T5^WED^0930-1020^SPMS-TR+16^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 16,
+        "fields": {
+            "course": 2,
+            "index": "70521",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T6^WED^0930-1020^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T6^WED^0930-1020^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 17,
+        "fields": {
+            "course": 2,
+            "index": "70522",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T7^WED^1230-1320^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T7^WED^1230-1320^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 18,
+        "fields": {
+            "course": 2,
+            "index": "70523",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T8^WED^1230-1320^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T8^WED^1230-1320^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 19,
+        "fields": {
+            "course": 2,
+            "index": "70524",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T9^WED^1430-1520^SPMS-TR+18^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T9^WED^1430-1520^SPMS-TR+18^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 20,
+        "fields": {
+            "course": 2,
+            "index": "70525",
+            "information": "LEC/STUDIO^LE^MON^1430-1520^LKC-LT^;LEC/STUDIO^LE^THU^1430-1620^LT23^;TUT^T10^WED^1430-1520^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T10^WED^1430-1520^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 21,
+        "fields": {
+            "course": 3,
+            "index": "70531",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T1^THU^1130-1220^SPMS-TR+12^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^THU^1130-1220^SPMS-TR+12^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 22,
+        "fields": {
+            "course": 3,
+            "index": "70532",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T2^THU^1130-1220^SPMS-TR+13^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^THU^1130-1220^SPMS-TR+13^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 23,
+        "fields": {
+            "course": 3,
+            "index": "70533",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T3^THU^1130-1220^SPMS-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^THU^1130-1220^SPMS-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 24,
+        "fields": {
+            "course": 3,
+            "index": "70534",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T4^THU^1230-1320^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T4^THU^1230-1320^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 25,
+        "fields": {
+            "course": 3,
+            "index": "70535",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T5^THU^1230-1320^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T5^THU^1230-1320^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 26,
+        "fields": {
+            "course": 3,
+            "index": "70536",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T6^THU^1330-1420^SPMS-TR+12^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T6^THU^1330-1420^SPMS-TR+12^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 27,
+        "fields": {
+            "course": 3,
+            "index": "70537",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T7^THU^1330-1420^SPMS-TR+13^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T7^THU^1330-1420^SPMS-TR+13^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 28,
+        "fields": {
+            "course": 3,
+            "index": "70538",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T8^THU^1330-1420^SPMS-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T8^THU^1330-1420^SPMS-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 29,
+        "fields": {
+            "course": 3,
+            "index": "70539",
+            "information": "LEC/STUDIO^LE^MON^1530-1720^LT23^;TUT^T9^THU^1630-1720^SPMS-TR+13^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T9^THU^1630-1720^SPMS-TR+13^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 30,
+        "fields": {
+            "course": 4,
+            "index": "70546",
+            "information": "LEC/STUDIO^LE^FRI^0930-1120^SPMS-LT1^;TUT^T8^THU^1630-1720^SPMS-TR+19^Teaching Wk2,3,5,6,8,9,11,13;LAB^LA2^WED^1630-1820^COMP LAB 1^",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "LAB^LA2^WED^1630-1820^COMP LAB 1^;TUT^T8^THU^1630-1720^SPMS-TR+19^Teaching Wk2,3,5,6,8,9,11,13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 31,
+        "fields": {
+            "course": 4,
+            "index": "70547",
+            "information": "LEC/STUDIO^LE^FRI^0930-1120^SPMS-LT1^;TUT^T3^TUE^1130-1220^SPMS-TR+13^Teaching Wk2,3,5,6,8,9,11,13;LAB^LA4^FRI^1630-1820^COMP LAB 3^",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^TUE^1130-1220^SPMS-TR+13^Teaching Wk2,3,5,6,8,9,11,13;LAB^LA4^FRI^1630-1820^COMP LAB 3^"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 32,
+        "fields": {
+            "course": 4,
+            "index": "70548",
+            "information": "LEC/STUDIO^LE^FRI^0930-1120^SPMS-LT1^;TUT^T8^THU^1630-1720^SPMS-TR+19^Teaching Wk2,3,5,6,8,9,11,13;LAB^LA3^THU^1630-1820^COMP LAB 1^",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T8^THU^1630-1720^SPMS-TR+19^Teaching Wk2,3,5,6,8,9,11,13;LAB^LA3^THU^1630-1820^COMP LAB 1^"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 33,
+        "fields": {
+            "course": 5,
+            "index": "70751",
+            "information": "LEC/STUDIO^LE^TUE^1430-1620^SPMS-LT3^;LEC/STUDIO^LE^WED^1430-1520^SPMS-LT2^;TUT^T1^FRI^1130-1220^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^FRI^1130-1220^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 34,
+        "fields": {
+            "course": 5,
+            "index": "70752",
+            "information": "LEC/STUDIO^LE^TUE^1430-1620^SPMS-LT3^;LEC/STUDIO^LE^WED^1430-1520^SPMS-LT2^;TUT^T2^FRI^1430-1520^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^FRI^1430-1520^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 35,
+        "fields": {
+            "course": 5,
+            "index": "70753",
+            "information": "LEC/STUDIO^LE^TUE^1430-1620^SPMS-LT3^;LEC/STUDIO^LE^WED^1430-1520^SPMS-LT2^;TUT^T3^FRI^1530-1620^SPMS-TR+14^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^FRI^1530-1620^SPMS-TR+14^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 36,
+        "fields": {
+            "course": 6,
+            "index": "50001",
+            "information": "LEC/STUDIO^LE^TUE^1230-1420^LT13^;TUT^C01^THU^1630-1720^TR+107^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^C01^THU^1630-1720^TR+107^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 37,
+        "fields": {
+            "course": 6,
+            "index": "50002",
+            "information": "LEC/STUDIO^LE^TUE^1230-1420^LT13^;TUT^C02^FRI^1030-1120^TR+107^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^C02^FRI^1030-1120^TR+107^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 38,
+        "fields": {
+            "course": 6,
+            "index": "50003",
+            "information": "LEC/STUDIO^LE^TUE^1230-1420^LT13^;TUT^C03^FRI^1130-1220^TR+107^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^C03^FRI^1130-1220^TR+107^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 39,
+        "fields": {
+            "course": 6,
+            "index": "50004",
+            "information": "LEC/STUDIO^LE^TUE^1230-1420^LT13^;TUT^C04^FRI^1230-1320^TR+107^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^C04^FRI^1230-1320^TR+107^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 40,
+        "fields": {
+            "course": 7,
+            "index": "23369",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA1^MON^1230-1320^LHN-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA1^MON^1230-1320^LHN-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 41,
+        "fields": {
+            "course": 7,
+            "index": "23370",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA2^MON^1230-1320^TR+37^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA2^MON^1230-1320^TR+37^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 42,
+        "fields": {
+            "course": 7,
+            "index": "23371",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA3^TUE^1230-1320^TR+5^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA3^TUE^1230-1320^TR+5^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 43,
+        "fields": {
+            "course": 7,
+            "index": "23372",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA4^TUE^1230-1320^TR+33^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA4^TUE^1230-1320^TR+33^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 44,
+        "fields": {
+            "course": 7,
+            "index": "23373",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA5^WED^1230-1320^TR+2^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA5^WED^1230-1320^TR+2^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 45,
+        "fields": {
+            "course": 7,
+            "index": "23374",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA6^WED^1230-1320^TR+33^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA6^WED^1230-1320^TR+33^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 46,
+        "fields": {
+            "course": 7,
+            "index": "23375",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA7^THU^1130-1220^LHN-TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA7^THU^1130-1220^LHN-TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 47,
+        "fields": {
+            "course": 7,
+            "index": "23376",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA8^THU^1130-1220^LHN-TR+16^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA8^THU^1130-1220^LHN-TR+16^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 48,
+        "fields": {
+            "course": 7,
+            "index": "23377",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA9^FRI^1130-1220^TR+33^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA9^FRI^1130-1220^TR+33^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 49,
+        "fields": {
+            "course": 7,
+            "index": "23378",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA10^FRI^1130-1220^TR+37^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA10^FRI^1130-1220^TR+37^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 50,
+        "fields": {
+            "course": 7,
+            "index": "23379",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA11^FRI^1230-1320^TR+33^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA11^FRI^1230-1320^TR+33^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 51,
+        "fields": {
+            "course": 7,
+            "index": "23380",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^MA12^FRI^1230-1320^TR+37^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^MA12^FRI^1230-1320^TR+37^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 52,
+        "fields": {
+            "course": 7,
+            "index": "28331",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV1^MON^1530-1620^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV1^MON^1530-1620^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 53,
+        "fields": {
+            "course": 7,
+            "index": "28332",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV2^MON^1230-1320^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV2^MON^1230-1320^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 54,
+        "fields": {
+            "course": 7,
+            "index": "28333",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV3^TUE^1630-1720^TR+35^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV3^TUE^1630-1720^TR+35^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 55,
+        "fields": {
+            "course": 7,
+            "index": "28334",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV4^THU^1530-1620^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV4^THU^1530-1620^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 56,
+        "fields": {
+            "course": 7,
+            "index": "28335",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV5^FRI^1030-1120^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV5^FRI^1030-1120^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 57,
+        "fields": {
+            "course": 7,
+            "index": "28336",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV6^WED^1330-1420^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV6^WED^1330-1420^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 58,
+        "fields": {
+            "course": 7,
+            "index": "28337",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^CV7^WED^1530-1620^TR+36^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^CV7^WED^1530-1620^TR+36^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 59,
+        "fields": {
+            "course": 7,
+            "index": "32067",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE01^MON^0930-1020^TR+69^Teaching Wk2-13",
+            "schedule": "OOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE01^MON^0930-1020^TR+69^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 60,
+        "fields": {
+            "course": 7,
+            "index": "32068",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE02^MON^1030-1120^TR+64^Teaching Wk2-13",
+            "schedule": "OOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE02^MON^1030-1120^TR+64^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 61,
+        "fields": {
+            "course": 7,
+            "index": "32069",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE03^MON^1330-1420^TR+68^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE03^MON^1330-1420^TR+68^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 62,
+        "fields": {
+            "course": 7,
+            "index": "32070",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE04^WED^0930-1020^TR+63^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE04^WED^0930-1020^TR+63^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 63,
+        "fields": {
+            "course": 7,
+            "index": "32071",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE05^WED^0930-1020^TR+64^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE05^WED^0930-1020^TR+64^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 64,
+        "fields": {
+            "course": 7,
+            "index": "32072",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE06^WED^0930-1020^TR+68^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE06^WED^0930-1020^TR+68^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 65,
+        "fields": {
+            "course": 7,
+            "index": "32073",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE07^WED^1030-1120^TR+68^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE07^WED^1030-1120^TR+68^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 66,
+        "fields": {
+            "course": 7,
+            "index": "32074",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE08^WED^1030-1120^TR+88^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE08^WED^1030-1120^TR+88^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 67,
+        "fields": {
+            "course": 7,
+            "index": "32075",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE09^WED^1030-1120^TR+95^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE09^WED^1030-1120^TR+95^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 68,
+        "fields": {
+            "course": 7,
+            "index": "32076",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE10^WED^1530-1620^TR+61^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE10^WED^1530-1620^TR+61^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 69,
+        "fields": {
+            "course": 7,
+            "index": "32077",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE11^WED^1530-1620^TR102^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE11^WED^1530-1620^TR102^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 70,
+        "fields": {
+            "course": 7,
+            "index": "32078",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE12^THU^1030-1120^TR+65^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE12^THU^1030-1120^TR+65^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 71,
+        "fields": {
+            "course": 7,
+            "index": "32079",
+            "information": "LEC/STUDIO^LE^FRI^0830-1020^LKC-LT^;TUT^EE13^THU^1330-1420^LHS-TR+24^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^EE13^THU^1330-1420^LHS-TR+24^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 72,
+        "fields": {
+            "course": 8,
+            "index": "10122",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCEA^THU^1530-1620^TR+4^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCEA^THU^1530-1620^TR+4^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 73,
+        "fields": {
+            "course": 8,
+            "index": "10123",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCEB^FRI^1130-1220^TR+9^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCEB^FRI^1130-1220^TR+9^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 74,
+        "fields": {
+            "course": 8,
+            "index": "10124",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCEC^THU^1630-1720^TR+3^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCEC^THU^1630-1720^TR+3^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 75,
+        "fields": {
+            "course": 8,
+            "index": "10125",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCED^WED^1430-1520^TR+2^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCED^WED^1430-1520^TR+2^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 76,
+        "fields": {
+            "course": 8,
+            "index": "10126",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCEE^FRI^1130-1220^TR+3^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCEE^FRI^1130-1220^TR+3^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 77,
+        "fields": {
+            "course": 8,
+            "index": "10127",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCE1^FRI^1330-1420^TR+5^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCE1^FRI^1330-1420^TR+5^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 78,
+        "fields": {
+            "course": 8,
+            "index": "10128",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCE2^FRI^1330-1420^TR+9^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCE2^FRI^1330-1420^TR+9^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 79,
+        "fields": {
+            "course": 8,
+            "index": "10129",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCE3^THU^1030-1120^TR+9^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCE3^THU^1030-1120^TR+9^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 80,
+        "fields": {
+            "course": 8,
+            "index": "10130",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FDDA^MON^1430-1520^TR+6^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FDDA^MON^1430-1520^TR+6^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 81,
+        "fields": {
+            "course": 8,
+            "index": "10131",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FDDB^WED^1230-1320^TR+3^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FDDB^WED^1230-1320^TR+3^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 82,
+        "fields": {
+            "course": 8,
+            "index": "10132",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FDDC^WED^1430-1520^TR+5^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FDDC^WED^1430-1520^TR+5^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 83,
+        "fields": {
+            "course": 8,
+            "index": "10133",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FCCA^THU^1130-1220^TR+2^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FCCA^THU^1130-1220^TR+2^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 84,
+        "fields": {
+            "course": 8,
+            "index": "10134",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FR1^MON^1430-1520^TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FR1^MON^1430-1520^TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 85,
+        "fields": {
+            "course": 8,
+            "index": "10135",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^FR2^TUE^0930-1020^TR+9^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^FR2^TUE^0930-1020^TR+9^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 86,
+        "fields": {
+            "course": 8,
+            "index": "10397",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^ECDS1^MON^1530-1620^TR+16^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^ECDS1^MON^1530-1620^TR+16^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 87,
+        "fields": {
+            "course": 8,
+            "index": "10398",
+            "information": "LEC/STUDIO^SCL1^FRI^1530-1620^LT1^;TUT^ECDS2^MON^1630-1720^TR+20^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^ECDS2^MON^1630-1720^TR+20^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 88,
+        "fields": {
+            "course": 9,
+            "index": "19517",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T1^WED^1330-1420^LHS-TR+48^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^WED^1330-1420^LHS-TR+48^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 89,
+        "fields": {
+            "course": 9,
+            "index": "19518",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T2^WED^1430-1520^LHS-TR+48^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^WED^1430-1520^LHS-TR+48^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 90,
+        "fields": {
+            "course": 9,
+            "index": "19519",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T3^WED^1530-1620^LHS-TR+48^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^WED^1530-1620^LHS-TR+48^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 91,
+        "fields": {
+            "course": 9,
+            "index": "19520",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T4^WED^1630-1720^LHS-TR+48^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T4^WED^1630-1720^LHS-TR+48^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 92,
+        "fields": {
+            "course": 9,
+            "index": "19521",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T5^THU^0930-1020^LHS-TR+42^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T5^THU^0930-1020^LHS-TR+42^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 93,
+        "fields": {
+            "course": 9,
+            "index": "19522",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T6^THU^1030-1120^LHS-TR+42^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T6^THU^1030-1120^LHS-TR+42^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 94,
+        "fields": {
+            "course": 9,
+            "index": "19523",
+            "information": "LEC/STUDIO^LEC1^WED^0930-1120^LT22^;TUT^T7^THU^1130-1220^LHS-TR+42^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T7^THU^1130-1220^LHS-TR+42^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 95,
+        "fields": {
+            "course": 10,
+            "index": "70576",
+            "information": "LEC/STUDIO^LE^TUE^1130-1320^MAS EC RM1^;TUT^T1^THU^1530-1620^MAS EC RM1^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": ""
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 96,
+        "fields": {
+            "course": 11,
+            "index": "70756",
+            "information": "LEC/STUDIO^LE^TUE^0930-1120^SPMS-LT2^;TUT^T1^FRI^0930-1020^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^FRI^0930-1020^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 97,
+        "fields": {
+            "course": 11,
+            "index": "70757",
+            "information": "LEC/STUDIO^LE^TUE^0930-1120^SPMS-LT2^;TUT^T2^FRI^1030-1120^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^FRI^1030-1120^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 98,
+        "fields": {
+            "course": 11,
+            "index": "70758",
+            "information": "LEC/STUDIO^LE^TUE^0930-1120^SPMS-LT2^;TUT^T3^FRI^1330-1420^SPMS-TR+15^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^FRI^1330-1420^SPMS-TR+15^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 99,
+        "fields": {
+            "course": 12,
+            "index": "15101",
+            "information": "LEC/STUDIO^LE^WED^0830-1020^LT19^;TUT^T1^MON^1130-1220^TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T1^MON^1130-1220^TR+17^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 100,
+        "fields": {
+            "course": 12,
+            "index": "15102",
+            "information": "LEC/STUDIO^LE^WED^0830-1020^LT19^;TUT^T2^MON^1430-1520^TR+19^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T2^MON^1430-1520^TR+19^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 101,
+        "fields": {
+            "course": 12,
+            "index": "15103",
+            "information": "LEC/STUDIO^LE^WED^0830-1020^LT19^;TUT^T3^MON^1530-1620^TR+19^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T3^MON^1530-1620^TR+19^Teaching Wk2-13"
+        }
+    },
+    {
+        "model": "courses.courseindex",
+        "pk": 102,
+        "fields": {
+            "course": 12,
+            "index": "15104",
+            "information": "LEC/STUDIO^LE^WED^0830-1020^LT19^;TUT^T4^TUE^1430-1520^TR+17^Teaching Wk2-13",
+            "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXOOOOOOOOOOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+            "filtered_information": "TUT^T4^TUE^1430-1520^TR+17^Teaching Wk2-13"
+        }
+    }
+]

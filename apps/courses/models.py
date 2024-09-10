@@ -1,3 +1,166 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+from apps.courses.validations import (
+    validate_index,
+    validate_exam_schedule,
+    validate_information,
+    validate_weekly_schedule,
+)
 
-# Create your models here.
+
+class Course(models.Model):
+    '''
+    General information about a course.
+
+    `code` is the course code, e.g. 'MH1100', 'SC1007', 'MH3700', etc.
+    `name` is the course title, e.g. 'Calculus I', 'Data Structures and Algorithms', etc.
+    `academic_units` is the number of academic units for the course.
+    `last_updated` is the last date and time the Course instance was updated.
+    '''
+    code = models.CharField(max_length=6, unique=True)
+    name = models.CharField(max_length=100)
+    academic_units = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+    last_updated = models.DateTimeField(auto_now=True)
+
+    '''
+    Derived information: can be gained from the course code, but stored separately for easier access.
+    
+    `level` is determined by the first non-letter character in the course code.
+    Currently, only levels 1 to 5 are stored, with the rest stored as 10.
+    If the number after the letters is less than 4 digits, it is stored as 10.
+    Example: lv1: MH1101, SC1003; lv3: MH3700, E3102L; level 10: AAA28R, AGE18A, ES9003.
+
+    `program_code` are the characters up to and excluding the first non-letter character in the course code.
+    Example: MH1101 -> program_code = 'MH'; SC1003 -> program_code = 'SC';
+    AAA28R -> program_code = 'AAA'; E3102L -> program_code = 'E'.
+    '''
+    level = models.CharField(max_length=2, null=True, blank=True)
+    program_code = models.CharField(max_length=3, null=True, blank=True)
+
+    '''
+    Additional information: further details about a course.
+    All of these data are stored as strings, and may not be present for all courses.
+    '''
+    description = models.TextField(null=True, blank=True)
+    prerequisite = models.CharField(max_length=300, null=True, blank=True)
+    mutually_exclusive = models.CharField(max_length=300, null=True, blank=True)
+    not_available = models.CharField(max_length=300, null=True, blank=True)
+    not_available_all = models.CharField(max_length=300, null=True, blank=True)
+    offered_as_ue = models.BooleanField(default=True)
+    offered_as_bde = models.BooleanField(default=True)
+    grade_type = models.CharField(max_length=300, null=True, blank=True)
+    not_offered_as_core_to = models.CharField(max_length=300, null=True, blank=True)
+    not_offered_as_pe_to = models.CharField(max_length=300, null=True, blank=True)
+    not_offered_as_bde_ue_to = models.CharField(max_length=300, null=True, blank=True)
+    department_maintaining = models.CharField(max_length=50, null=True, blank=True)
+    program_list = models.CharField(max_length=1000, null=True, blank=True)
+    
+    '''
+    Exam and Course schedule.
+
+    Let (S) denotes a 32 character string, each character represent 30 minutes interval,
+    from 8am to 24pm, 16 hours in total. The character is 'X' if the interval is occupied,
+    otherwise it is 'O'. The first character represents 8am to 8.30am, and so on.
+    For example, 'OOOXXXXOOOOOOOOOOOOOOOOOOOOOOOOO' means that 9.30am to 11.30am is occupied.
+
+    `exam_schedule` is stored in the following format:
+    YYYY-MM-DDHH:MM-HH:MM(S)
+    Example: 2023-11-0713:00-15:00OOOOOOOOOOXXXXOOOOOOOOOOOOOOOOOO
+    Interpretation: Exam is on 7 Nov 2023, 1pm to 3pm.
+
+    `common_schedule` is stored in the following format:
+    (S)(S)(S)(S)(S)(S)
+    Each (S) represents a day of the week, from Monday to Saturday.
+    Common schedule are the occupied time slots that are common in all indexes of the course.
+    '''
+    exam_schedule = models.CharField(max_length=53, blank=True, validators=[validate_exam_schedule])
+    common_schedule = models.CharField(max_length=192, validators=[validate_weekly_schedule])
+
+    '''
+    Information that is common across all indexes of the course.
+    This field is derived from `information` field in CourseIndex model.
+    A single information group is stored in the following format:
+    type^group^day^time^venue^remark, with '^' as the separator.
+    '''
+    common_information = models.TextField(null=True, blank=True, validators=[validate_information])
+
+    @property
+    def get_common_information(self):
+        def serialize_info(info):
+            single_infos = info.split('^')
+            return {
+                'type': single_infos[0],
+                'group': single_infos[1],
+                'day': single_infos[2],
+                'time': single_infos[3],
+                'venue': single_infos[4],
+                'remark': single_infos[5],
+            }
+        return [serialize_info(info_group) for info_group in self.common_information.split(';')] if \
+            self.common_information else []
+    
+    @property
+    def get_exam_schedule(self):
+        if self.exam_schedule == '':
+            return None
+        return {
+            'date': self.exam_schedule[:10],
+            'time': self.exam_schedule[10:21],
+            'timecode': self.exam_schedule[21:],
+        }
+
+    class Meta:
+        verbose_name_plural = 'Courses'
+
+    def __str__(self):
+        return f'<{self.code}: {self.name}>'
+
+
+class CourseIndex(models.Model):
+    '''
+    General information about a course index.
+
+    `course` is the course that the index belongs to.
+    `index` is a unique index number, e.g. '70501', '70523', '15104', etc.
+    `information` stores the information about the index, in the following format:
+    type^group^day^time^venue^remark;type^group^day^time^venue^remark;...
+    Example: LEC^1^MON^08:30-10:30^LT1^;TUT^1^WED^08:30-10:30^TR1^
+    `schedule` stores the weekly schedule of the index, in the following format:
+    (S)(S)(S)(S)(S)(S), refer to `common_schedule` in Course model for more details.
+    '''
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='indexes')
+    index = models.CharField(max_length=5, unique=True, validators=[validate_index])
+    information = models.TextField(validators=[validate_information])
+    schedule = models.CharField(max_length=192, validators=[validate_weekly_schedule])
+    
+    '''
+    Filtered information are `information` that are not common across all indexes of the course.
+    '''
+    filtered_information = models.TextField(null=True, blank=True, validators=[validate_information])
+    
+    def serialize_info(self, info):
+        single_infos = info.split('^')
+        return {
+            'type': single_infos[0],
+            'group': single_infos[1],
+            'day': single_infos[2],
+            'time': single_infos[3],
+            'venue': single_infos[4],
+            'remark': single_infos[5],
+        }
+
+    @property
+    def get_information(self):
+        return [self.serialize_info(info_group) for info_group in self.information.split(';')] if \
+            self.information else []
+    
+    @property
+    def get_filtered_information(self):
+        return [self.serialize_info(info_group) for info_group in self.filtered_information.split(';')] if \
+            self.filtered_information else []
+
+    class Meta:
+        verbose_name_plural = 'Course Indexes'
+
+    def __str__(self):
+        return f'<Index {self.index} for course {self.course.code}>'

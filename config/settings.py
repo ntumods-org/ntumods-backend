@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
     'rest_framework',
+    'django_filters',
 
     'apps.courses',
     'apps.optimizer',
@@ -60,6 +62,25 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+CORS_ALLOW_HEADERS = [
+    "Content-Type", "Authorization"
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://backend.ntusu.org',
+]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'https://backend.ntusu.org',
+) 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://backend.ntusu.org',
+]
 
 TEMPLATES = [
     {
@@ -83,19 +104,30 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('PGDATABASE'),
-        'USER': getenv('PGUSER'),
-        'PASSWORD': getenv('PGPASSWORD'),
-        'HOST': getenv('PGHOST'),
-        'PORT': getenv('PGPORT', 5432),
-        'OPTIONS': {
-            'sslmode': 'require',
+SQLITE3 = getenv('SQLITE3') == 'True'
+
+if SQLITE3:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         },
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': getenv('PGDATABASE'),
+            'USER': getenv('PGUSER'),
+            'PASSWORD': getenv('PGPASSWORD'),
+            'HOST': getenv('PGHOST'),
+            'PORT': getenv('PGPORT', 5432),
+            'OPTIONS': {
+                'sslmode': 'require',
+            },
+        }
+    }
 
 
 # Password validation
