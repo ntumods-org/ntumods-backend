@@ -166,6 +166,23 @@ class CourseIndex(models.Model):
         return f'<Index {self.index} for course {self.course.code}>'
 
 
+class CoursePrefix(models.Model):
+    '''
+    Store unique course code prefixes, e.g. 'MH', 'SC', 'E', 'AAA', etc.
+    so it does not have to be calculated every query.
+    Used for a filter feature in the frontend for searching courses by prefix.
+    The instances here should be updated from Course instances.
+    '''
+    prefix = models.CharField(max_length=3, unique=True)
+    last_updated = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name_plural = 'Course Prefixes'
+    
+    def __str__(self):
+        return f'<Course Prefix: {self.prefix}>'
+
+
 class CourseProgram(models.Model):
     '''
     CourseProgram and Course are in a many-to-many relationship.
@@ -190,20 +207,3 @@ class CourseProgram(models.Model):
 
     def __str__(self):
         return f'<CourseProgram #{self.id}: {self.name}>'
-
-
-class CoursePrefix(models.Model):
-    '''
-    Store unique course code prefixes, e.g. 'MH', 'SC', 'E', 'AAA', etc.
-    so it does not have to be calculated every query.
-    Used for a filter feature in the frontend for searching courses by prefix.
-    The instances here should be updated from Course instances.
-    '''
-    prefix = models.CharField(max_length=3, unique=True)
-    last_updated = models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        verbose_name_plural = 'Course Prefixes'
-    
-    def __str__(self):
-        return f'<Course Prefix: {self.prefix}>'

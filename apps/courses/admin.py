@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html, format_html_join
 from django.utils.safestring import mark_safe
 
-from apps.courses.models import Course, CourseIndex, CourseProgram, CoursePrefix
+from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -14,15 +14,6 @@ class CourseAdmin(admin.ModelAdmin):
 
 class CourseIndexAdmin(admin.ModelAdmin):
     list_display = ['id', 'index', 'course']
-
-
-class CourseProgramAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'year', 'value', 'last_updated', 'courses_count']
-    search_fields = ['name', 'year', 'value']
-    list_filter = ['year']
-    
-    def courses_count(self, obj):
-        return obj.courses.count()
 
 
 class CoursePrefixAdmin(admin.ModelAdmin):
@@ -47,7 +38,16 @@ class CoursePrefixAdmin(admin.ModelAdmin):
     courses_list.short_description = "Courses with this prefix"
 
 
+class CourseProgramAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'year', 'value', 'last_updated', 'courses_count']
+    search_fields = ['name', 'year', 'value']
+    list_filter = ['year']
+    
+    def courses_count(self, obj):
+        return obj.courses.count()
+
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(CourseIndex, CourseIndexAdmin)
-admin.site.register(CourseProgram, CourseProgramAdmin)
 admin.site.register(CoursePrefix, CoursePrefixAdmin)
+admin.site.register(CourseProgram, CourseProgramAdmin)

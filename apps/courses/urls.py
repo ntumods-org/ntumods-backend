@@ -3,6 +3,8 @@ from apps.courses.views import (
     CourseListView,
     CourseDetailView,
     CourseIndexDetailView,
+    CoursePrefixListView,
+    CourseProgramListView,
 )
 
 
@@ -10,6 +12,8 @@ app_name = 'courses'
 
 urlpatterns = [
     path('', CourseListView.as_view(), name='course-list'),
-    path('<str:code>/', CourseDetailView.as_view(), name='course-detail'),
+    path('code/<str:code>/', CourseDetailView.as_view(), name='course-detail'),
     path('index/<str:index>/', CourseIndexDetailView.as_view(), name='course-index-detail'),
+    path('prefixes/', CoursePrefixListView.as_view(), name='course-prefix-list'),
+    path('programs/', CourseProgramListView.as_view(), name='course-program-list'),
 ]

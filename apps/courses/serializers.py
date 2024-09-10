@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.courses.models import Course, CourseIndex
+from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram
 
 
 class CoursePartialSerializer(serializers.ModelSerializer):
@@ -59,3 +59,14 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
     def get_program_list(self, obj):
         program_list = obj.program_list.split(', ') if obj.program_list else []
         return program_list
+
+
+class CourseProgramSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseProgram
+        fields = [
+            'id',
+            'name',
+            'value',
+            'year',
+        ]
