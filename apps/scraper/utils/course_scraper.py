@@ -1,4 +1,6 @@
 from bs4 import BeautifulSoup, element
+from collections import Counter
+from django.db.utils import IntegrityError
 from urllib import request
 from typing import Dict, List, Tuple
 import re
@@ -6,6 +8,9 @@ import re
 from apps.courses.models import Course, CourseIndex
 
 
+'''
+Get HTML content from NTU course schedule website, given academic year and semester.
+'''
 def get_soup_from_url(acadyear: str, acadsem: str) -> BeautifulSoup:
     get_url = lambda acadyear, acadsem: f"https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display1?acadsem={acadyear};{acadsem}&staff_access=true&r_search_type=F&boption=Search&r_subj_code="
     url = get_url(acadyear, acadsem)
@@ -13,7 +18,13 @@ def get_soup_from_url(acadyear: str, acadsem: str) -> BeautifulSoup:
         soup = BeautifulSoup(fp, "lxml")
         return soup
 
-
+'''
+Return a list of raw data with length (end-start+1) containing 2-sized tuples,
+where the tuple contain the header info dict and the schedule info list.
+Header info is a dict with key `course_code`, `course_name`, and `academic_units`.
+Schedule info is a list of dict with key `index` and `info`.
+`info` value is a list containing row_info dict with key `type`, `group`, `day`, `time`, `venue`, and `remark`.
+'''
 def get_raw_data(soup: BeautifulSoup, start: int=0, end: int=99999):
     # Return a list of length (end-start+1) containing 2-sized tuples,
     # where the tuple contain the header table and the schedule table
@@ -89,7 +100,12 @@ def get_raw_data(soup: BeautifulSoup, start: int=0, end: int=99999):
         raw_data.append((header_info, schedule_info))
     return raw_data
 
-
+'''
+Takes as input raw_data from get_raw_data function and return processed data.
+Processed data is a list of dict with key `course_code`, `course_name`, `academic_units`,
+`common_schedule`, `common_information`, and `indexes`.
+`indexes` is a list of dict with key `index`, `schedule`, `information`, and `filtered_information`.
+'''
 def process_data(raw_data: List[Tuple[dict, List]]) -> List[Dict]:
     processed_data = []
     # loop through each course
@@ -157,34 +173,65 @@ def process_data(raw_data: List[Tuple[dict, List]]) -> List[Dict]:
         for index in indexes_data:
             index['schedule'] = ''.join(index['schedule'])
 
+        # get `common_information`, a string containing information that is common to all indexes
+        information_dict = Counter()
+        for index_data in indexes_data:
+            information_dict.update(index_data['information'].split(';'))
+        common_information_list = [info for info, count in information_dict.items() if count == len(indexes_data)]
+        clean_data['common_information'] = ';'.join(common_information_list)
+
+        # get `filtered_information` field for each index, containing information that is not common to all indexes
+        for index in indexes_data:
+            index['filtered_information'] = ';'.join(set(index['information'].split(';')) - set(common_information_list))
+
         processed_data.append(clean_data)
     return processed_data
 
-
+'''
+Takes as input processed_data from process_data function and simply save it to database.
+'''
 def save_course_data(data: List[Dict]) -> None:
     for course in data:
-        course_code = Course.objects.create(
-            code=course['course_code'],
-            name=course['course_name'],
-            academic_units=course['academic_units'],
-            common_schedule=course['common_schedule'],
-        )
-        for index in course['indexes']:
-            CourseIndex.objects.create(
-                course=course_code,
-                index=index['index'],
-                information=index['information'],
-                schedule=index['schedule'],
+        try:
+            course_instance = Course.objects.create(
+                code=course['course_code'],
+                name=course['course_name'],
+                academic_units=course['academic_units'],
+                common_schedule=course['common_schedule'],
+                common_information=course['common_information'],
             )
+        except IntegrityError:
+            course_instance = Course.objects.get(code=course['course_code'])
+            course_instance.name = course['course_name']
+            course_instance.academic_units = course['academic_units']
+            course_instance.common_schedule = course['common_schedule']
+            course_instance.common_information = course['common_information']
+            course_instance.save()
 
+        for index in course['indexes']:
+            try:
+                CourseIndex.objects.create(
+                    course=course_instance,
+                    index=index['index'],
+                    information=index['information'],
+                    schedule=index['schedule'],
+                    filtered_information=index['filtered_information']
+                )
+            except IntegrityError:
+                course_index_instance = CourseIndex.objects.get(course=course_instance, index=index['index'])
+                course_index_instance.information = index['information']
+                course_index_instance.schedule = index['schedule']
+                course_index_instance.filtered_information = index['filtered_information']
+                course_index_instance.save()
 
+# Main function to perform course scraping
 def perform_course_scraping():
     ACADEMIC_YEAR = '2024'
     ACADEMIC_SEMESTER = '1'
     try:
         soup = get_soup_from_url(ACADEMIC_YEAR, ACADEMIC_SEMESTER)
-        raw_data = get_raw_data(soup, 0, 4)
+        raw_data = get_raw_data(soup)
         processed_data = process_data(raw_data)
         save_course_data(processed_data)
     except Exception as e:
-        print(f'Course Schedule Scraper Error: {e}')
+        print(f'Course Scraper Error: {e}')

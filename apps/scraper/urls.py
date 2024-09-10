@@ -6,5 +6,5 @@ from . import views
 app_name = 'scraper'
 
 urlpatterns = [
-    path('course/', views.index, name='index'),
+    path('course/', views.get_course_data, name='scraper-course'),
 ]
