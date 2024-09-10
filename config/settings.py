@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'rest_framework',
+    'django_filters',
 
     'apps.courses',
     'apps.optimizer',
