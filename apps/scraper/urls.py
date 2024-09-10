@@ -1,9 +1,11 @@
 from django.urls import path
-from django.http import HttpResponse
+
+from . import views
 
 
 app_name = 'scraper'
 
 urlpatterns = [
-    path('', lambda request: HttpResponse('Hello, world!'), name='index'),
+    path('course/', views.get_course_data, name='scraper-course'),
+    path('exam/', views.get_exam_data, name='scraper-exam'),
 ]

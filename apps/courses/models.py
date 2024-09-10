@@ -1,5 +1,6 @@
-from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+
 from apps.courses.validations import (
     validate_index,
     validate_exam_schedule,
