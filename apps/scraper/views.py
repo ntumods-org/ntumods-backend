@@ -7,6 +7,7 @@ from apps.scraper.decorators import custom_swagger_index_schema
 from apps.scraper.utils.course_scraper import perform_course_scraping
 from apps.scraper.utils.detail_scraper import perform_course_detail_scraping
 from apps.scraper.utils.exam_scraper import perform_exam_schedule_scraping
+from apps.scraper.utils.program_scraper import perform_program_scraping
 
 
 @api_view(['GET'])
@@ -29,3 +30,9 @@ def get_detail_data(request):
 def get_exam_data(_):
     perform_exam_schedule_scraping()
     return Response('Exam Scraping Completed!')
+
+@api_view(['GET'])
+@permission_classes([IsSuperUser])
+def get_program_data(_):
+    perform_program_scraping()
+    return Response('Program Scraping Completed!')
