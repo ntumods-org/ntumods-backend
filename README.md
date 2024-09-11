@@ -55,7 +55,7 @@ This section will guide you through setting up the project on your local machine
 - 🚀 Schedule Optimizer (WIP)
 
 ## Contributing
-If you want to contribute to NTUMods, please read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
+If you want to contribute to NTUMods, please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md) to get started.
 
 ## License
 NTUMods is open source and available under the [AGPL-3.0-or-later](./LICENSE) license.

@@ -1,9 +1,10 @@
 from django.urls import path
-from django.http import HttpResponse
+
+from .views import OptimizeView
 
 
 app_name = 'optimizer'
 
 urlpatterns = [
-    path('', lambda request: HttpResponse('Hello, world!'), name='index'),
+    path('optimize/', OptimizeView.as_view(), name='optimize'),
 ]
