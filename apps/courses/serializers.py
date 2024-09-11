@@ -65,7 +65,7 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
         return program_list
     
     def get_prefix(self, obj):
-        return obj.prefix.prefix
+        return obj.prefix.prefix if obj.prefix else None
 
 
 class CourseProgramSerializer(serializers.ModelSerializer):
