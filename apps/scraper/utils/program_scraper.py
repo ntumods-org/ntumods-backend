@@ -99,7 +99,6 @@ def save_programs_courses(start_index: int, end_index: int):
     programs = CourseProgram.objects.all()
     for program in programs[start_index:end_index]:
         try:
-            print('program: ', program.name)
             form_data = {
                 'acadsem': FORMDATA_ACADSEM,
                 'r_course_yr': program.value,
