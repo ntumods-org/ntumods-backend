@@ -6,7 +6,11 @@ from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['id', 'code', 'name', 'last_updated', 'indexes_count']
+    list_display = ['id', 'code', 'name', 'AU', 'level', 'prefix', 'last_updated', 'indexes_count']
+
+    def AU(self, obj):
+        return obj.academic_units
+    AU.short_description = 'AU'
 
     def indexes_count(self, obj):
         return obj.indexes.count()
