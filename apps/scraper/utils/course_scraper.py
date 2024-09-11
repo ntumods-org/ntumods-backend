@@ -5,7 +5,7 @@ from urllib import request
 from typing import Dict, List, Tuple
 import re
 
-from apps.courses.models import Course, CourseIndex
+from apps.courses.models import Course, CourseIndex, CoursePrefix
 
 
 '''
@@ -103,7 +103,7 @@ def get_raw_data(soup: BeautifulSoup, start: int=0, end: int=99999):
 '''
 Takes as input raw_data from get_raw_data function and return processed data.
 Processed data is a list of dict with key `course_code`, `course_name`, `academic_units`,
-`common_schedule`, `common_information`, and `indexes`.
+`common_schedule`, `common_information`, `prefix`, `level`, and `indexes`.
 `indexes` is a list of dict with key `index`, `schedule`, `information`, and `filtered_information`.
 '''
 def process_data(raw_data: List[Tuple[dict, List]]) -> List[Dict]:
@@ -116,6 +116,20 @@ def process_data(raw_data: List[Tuple[dict, List]]) -> List[Dict]:
         clean_data['course_code'] = data[0]['course_code']
         clean_data['course_name'] = data[0]['course_name']
         clean_data['academic_units'] = data[0]['academic_units']
+
+        # derived information: course prefix & level
+        match = re.match(r'([A-Za-z]+)([0-9]+)', clean_data['course_code'])
+        prefix = ''
+        if match:
+            prefix = match.group(1)
+        clean_data['prefix'] = prefix
+
+        numeric_part = match.group(2) if match else ''
+        level = 10
+        if numeric_part and numeric_part.isdigit() and len(numeric_part) == 4:
+            first_digit = int(numeric_part[0])
+            level = first_digit if 1 <= first_digit <= 5 else 10
+        clean_data['level'] = level
 
         # get required data for all indexes of this course
         indexes_data = []
@@ -192,6 +206,10 @@ Takes as input processed_data from process_data function and simply save it to d
 '''
 def save_course_data(data: List[Dict]) -> None:
     for course in data:
+        # create new CoursePrefix instance if such prefix does not exist
+        prefix_instance, _ = CoursePrefix.objects.get_or_create(prefix=course['prefix'])
+
+        # create new Course instance if not exist, else update existing instance
         try:
             course_instance = Course.objects.create(
                 code=course['course_code'],
@@ -199,6 +217,8 @@ def save_course_data(data: List[Dict]) -> None:
                 academic_units=course['academic_units'],
                 common_schedule=course['common_schedule'],
                 common_information=course['common_information'],
+                prefix=prefix_instance,
+                level=course['level'],
             )
         except IntegrityError:
             course_instance = Course.objects.get(code=course['course_code'])
@@ -208,6 +228,7 @@ def save_course_data(data: List[Dict]) -> None:
             course_instance.common_information = course['common_information']
             course_instance.save()
 
+        # for each index, create new CourseIndex instance if not exist, else update existing instance
         for index in course['indexes']:
             try:
                 CourseIndex.objects.create(
