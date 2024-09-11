@@ -106,7 +106,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-SQLITE3 = getenv('SQLITE3') == 'True'
+SQLITE3 = getenv('SQLITE3', 'True') == 'True'
 
 if SQLITE3:
     DATABASES = {
