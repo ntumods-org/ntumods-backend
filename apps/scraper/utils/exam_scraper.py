@@ -107,6 +107,7 @@ def save_exam_schedule(data: List[Dict]) -> None:
 
 '''
 Main function to perform exam schedule scraping.
+Must be called only after course scraping is completed.
 Perform the following steps in order:
 - `get_soup_from_html_file`: get BeautifulSoup object from html file saved in FILE_PATH
 - `get_raw_data`: get raw data from BeautifulSoup object

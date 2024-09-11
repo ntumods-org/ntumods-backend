@@ -7,6 +7,6 @@ app_name = 'scraper'
 
 urlpatterns = [
     path('course/', views.get_course_data, name='scraper-course'),
-    path('exam/', views.get_exam_data, name='scraper-exam'),
     path('detail/', views.get_detail_data, name='scraper-detail'),
+    path('exam/', views.get_exam_data, name='scraper-exam'),
 ]

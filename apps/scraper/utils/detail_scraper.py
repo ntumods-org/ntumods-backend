@@ -62,6 +62,7 @@ def save_course_detail(soup: BeautifulSoup, course: Course):
 
 '''
 Main function to scrape course details.
+Must be called only after course scraping is completed.
 For all courses from start_index to end_index:
 - Send a POST request to NTU API which return the html of the course detail page
 - Call save_course_detail to parse and save the details to the Course instance
