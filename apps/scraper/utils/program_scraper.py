@@ -7,14 +7,23 @@ import requests
 from apps.courses.models import Course, CourseProgram
 
 
+'''
+Get HTML content from the URL.
+'''
 def get_soup_from_url() -> BeautifulSoup:
     URL = 'https://wis.ntu.edu.sg/webexe/owa/aus_subj_cont.main'
     with requests.get(URL) as fp:
         soup = BeautifulSoup(fp.content, 'html.parser')
         return soup
 
+'''
+Takes as input the BeautifulSoup object,
+returns a list of dictionaries containing the program name, value, and year.
+'''
 def get_programs_data(soup: BeautifulSoup) -> List[Dict[str, str]]:
     select_element = soup.find('select', {'name': 'r_course_yr'})
+    
+    # convert to string instead of using bs4 methods as option tag does not have a closing tag until way later
     html_str = str(select_element)
     programs_raw_data = html_str.split('option')
 
@@ -23,9 +32,11 @@ def get_programs_data(soup: BeautifulSoup) -> List[Dict[str, str]]:
     for raw_str in programs_raw_data:
         match = re.match(pattern, raw_str.strip())
         if match:
+            # for non-minor programs, value is <course>;<specialisation>;<year>;F (where applicable)
+            # for minor programs, value is MLOAD;<minor_abbreviation>
             value = match.group(1)
             name = match.group(2)
-            year = None
+            year = None # year is the third value in the value attribute if it exists
             try:
                 year = int(value.split(';')[2])
             except ValueError:
@@ -38,6 +49,9 @@ def get_programs_data(soup: BeautifulSoup) -> List[Dict[str, str]]:
     
     return programs_data
 
+'''
+Saves the programs data to the database if it does not already exist.
+'''
 def save_programs_data(programs_data: List[Dict[str, str]]):
     for program in programs_data:
         try:
@@ -49,6 +63,10 @@ def save_programs_data(programs_data: List[Dict[str, str]]):
         except IntegrityError:
             pass
 
+'''
+Takes as input a single CourseProgram instance and associated BeautifulSoup object.
+Save many to many relationship between that program and the courses.
+'''
 def save_single_program_courses(soup: BeautifulSoup, program: CourseProgram):
     tables = soup.find_all('table')
     for table in tables:
@@ -69,14 +87,17 @@ def save_single_program_courses(soup: BeautifulSoup, program: CourseProgram):
                 course_code_instance.program_list = ', '.join(unique_programs_list)
                 course_code_instance.save()
 
-def save_programs_courses():
+'''
+For every CourseProgram object, scrape the courses associated with it.
+'''
+def save_programs_courses(start_index: int, end_index: int):
     ENDPOINT = 'https://wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1'
     FORMDATA_ACADSEM = '2024_1'
     FORMDATA_ACAD = '2024'
     FORMDATA_SEMESTER = '1'
     
     programs = CourseProgram.objects.all()
-    for program in programs:
+    for program in programs[start_index:end_index]:
         try:
             print('program: ', program.name)
             form_data = {
@@ -101,11 +122,15 @@ def save_programs_courses():
             print(f'Failed to scrape program {program.name}')
             continue
 
-def perform_program_scraping():
+'''
+Main function to scrape programs data.
+Must be called only after course scraping is completed.
+'''
+def perform_program_scraping(start_index, end_index):
     try:
         soup = get_soup_from_url()
         programs_data = get_programs_data(soup)
         save_programs_data(programs_data)
-        save_programs_courses()
+        save_programs_courses(start_index, end_index)
     except Exception as e:
         print(f'Program Scraper Error: {e}')
