@@ -25,7 +25,7 @@ Header info is a dict with key `course_code`, `course_name`, and `academic_units
 Schedule info is a list of dict with key `index` and `info`.
 `info` value is a list containing row_info dict with key `type`, `group`, `day`, `time`, `venue`, and `remark`.
 '''
-def get_raw_data(soup: BeautifulSoup, start: int=0, end: int=99999):
+def get_raw_data(soup: BeautifulSoup, start: int=0, end: int=9999) -> List[Tuple[Dict, List]]:
     # Return a list of length (end-start+1) containing 2-sized tuples,
     # where the tuple contain the header table and the schedule table
     # It contains the data for the courses from index `start` to `end` inclusive
@@ -245,7 +245,14 @@ def save_course_data(data: List[Dict]) -> None:
                 course_index_instance.filtered_information = index['filtered_information']
                 course_index_instance.save()
 
-# Main function to perform course scraping
+'''
+Main function to perform course scraping.
+Perform the following steps in order:
+- `get_soup_from_url`: get HTML content from NTU course website
+- `get_raw_data`: extract raw data from the HTML content
+- `process_data`: process the raw data to get necessary information
+- `save_course_data`: save the processed data to database
+'''
 def perform_course_scraping():
     ACADEMIC_YEAR = '2024'
     ACADEMIC_SEMESTER = '1'

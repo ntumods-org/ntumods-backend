@@ -60,6 +60,12 @@ def save_course_detail(soup: BeautifulSoup, course: Course):
     # save the changes
     course.save()
 
+'''
+Main function to scrape course details.
+For all courses from start_index to end_index:
+- Send a POST request to NTU API which return the html of the course detail page
+- Call save_course_detail to parse and save the details to the Course instance
+'''
 def perform_course_detail_scraping(start_index: int=0, end_index: int=9999):
     ENDPOINT = 'https://wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1'
     FORMDATA_ACADSEM = '2024_1'

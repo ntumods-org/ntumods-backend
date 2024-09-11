@@ -3,7 +3,10 @@ Important note!!!
 
 Currently, exam schedule html has to be saved manually from NTU website.
 Save the html as `exam_schedule.html` in `modsoptimizer/utils/scraping_files/` folder.
-Accessing the page directly is not possible due to the need to enter some credentials first.
+Accessing the page directly is not possible due to the need of entering NTU credentials.
+This is quite problematic as one has to update the html file manually to the repo,
+in order to update the exam schedule in the database.
+Looking for a better solution to automate this process!
 '''
 
 from bs4 import BeautifulSoup
@@ -14,11 +17,18 @@ import os
 from apps.courses.models import Course
 
 
+'''
+Get HTML content from file_path and return a BeautifulSoup object
+'''
 def get_soup_from_html_file(file_path: str) -> BeautifulSoup:
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
     return BeautifulSoup(html_content, "lxml")
 
+'''
+Takes as input a BeautifulSoup object and returns a list of dictionaries containing:
+date, day, time, course_code, course_title, duration
+'''
 def get_raw_data(soup: BeautifulSoup) -> List[Dict[str, str]]:
     raw_data = []
     exam_table = soup.find_all('table')[1] # exam schedule is the 2nd table
@@ -36,6 +46,11 @@ def get_raw_data(soup: BeautifulSoup) -> List[Dict[str, str]]:
         })
     return raw_data
 
+'''
+Takes as input raw data from get_raw_data and returns a list of dictionaries containing:
+course_code, exam_schedule_str (both processed data)
+Refer to courses/models.py for the format of exam_schedule_str
+'''
 def process_data(raw_data: List[Dict[str, str]]) -> List[Dict[str, str]]:
     data = []
     for exam in raw_data:
@@ -78,6 +93,9 @@ def process_data(raw_data: List[Dict[str, str]]) -> List[Dict[str, str]]:
         })
     return data
 
+'''
+Takes as input processed data from process_data and simply save the exam schedule to Course instance
+'''
 def save_exam_schedule(data: List[Dict]) -> None:
     for exam_data in data:
         try:
@@ -87,6 +105,14 @@ def save_exam_schedule(data: List[Dict]) -> None:
         except Course.DoesNotExist:
             print(f'Course code {exam_data["course_code"]} does not exist')
 
+'''
+Main function to perform exam schedule scraping.
+Perform the following steps in order:
+- `get_soup_from_html_file`: get BeautifulSoup object from html file saved in FILE_PATH
+- `get_raw_data`: get raw data from BeautifulSoup object
+- `process_data`: process raw data to get processed data
+- `save_exam_schedule`: save processed data to the database
+'''
 def perform_exam_schedule_scraping():
     try:
         FILE_PATH = os.path.join('apps', 'scraper', 'utils', 'scraping_files', 'exam_schedule.html')
