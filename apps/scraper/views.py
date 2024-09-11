@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 from apps.common.permissions import IsSuperUser
 from apps.scraper.utils.course_scraper import perform_course_scraping
+from apps.scraper.utils.detail_scraper import perform_course_detail_scraping
 from apps.scraper.utils.exam_scraper import perform_exam_schedule_scraping
 
 
@@ -17,3 +18,9 @@ def get_course_data(_):
 def get_exam_data(_):
     perform_exam_schedule_scraping()
     return Response('Exam Scraping Completed')
+
+@api_view(['GET'])
+@permission_classes([IsSuperUser])
+def get_detail_data(_):
+    perform_course_detail_scraping()
+    return Response('Course Detail Scraping Completed!')
