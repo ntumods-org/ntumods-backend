@@ -65,6 +65,19 @@ class CustomLevelMultipleFilter(BaseFilterBackend):
 
 
 '''
+When query parameter `program_code` is provided, filter courses by program code.
+Allows multiple program codes separated by semicolons, e.g. `program_code=ACC;MH;SC`.
+'''
+class PrefixMultipleFilter(BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        program_qp = request.query_params.get('prefix', None)
+        if not program_qp:
+            return queryset
+        programs = program_qp.split(';')
+        return queryset.filter(prefix__prefix__in=programs)
+
+
+'''
 Custom mixin class to be used in CourseListView.
 Applied various query parameters for filtering, ordering, and searching.
 Applied custom pagination class.
@@ -77,6 +90,7 @@ class CourseQueryParamsMixin:
         CustomProgramSearch,
         CustomYearSearch,
         CustomLevelMultipleFilter,
+        PrefixMultipleFilter,
     ]
     filterset_fields = {
         'code': ['icontains'],
