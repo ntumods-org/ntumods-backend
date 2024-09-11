@@ -29,6 +29,7 @@ class CourseIndexSerializer(serializers.ModelSerializer):
 class CourseCompleteSerializer(serializers.ModelSerializer):
     indexes = CourseIndexSerializer(many=True, read_only=True)
     program_list = serializers.SerializerMethodField()
+    prefix = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -37,6 +38,8 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
             'code',
             'name',
             'academic_units',
+            'prefix',
+            'level',
             'last_updated',
             'get_exam_schedule',
             'get_common_information',
@@ -60,6 +63,9 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
     def get_program_list(self, obj):
         program_list = obj.program_list.split(', ') if obj.program_list else []
         return program_list
+    
+    def get_prefix(self, obj):
+        return obj.prefix.prefix
 
 
 class CourseProgramSerializer(serializers.ModelSerializer):
