@@ -4,6 +4,9 @@ config/settings/local.py
 # OS ignores
 *.DS_Store
 
+# Docker #
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

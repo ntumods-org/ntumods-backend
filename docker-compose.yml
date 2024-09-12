@@ -1,0 +1,37 @@
+version: '3'
+services:
+  db:
+    container_name: ntumods_db
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  api:
+    build:
+      context: .
+      dockerfile: deployments/dev/Dockerfile
+    container_name: ntumods_api
+    image: ntumods_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SQLITE3=False
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - PGHOST=db
+      - PGPORT=5432
+      - PGSSLMODE=disable
+    depends_on:
+      - db
+volumes:
+  db_data:
