@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.feedback.models import FeedbackForm
+
+
+admin.site.register(FeedbackForm)
