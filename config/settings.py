@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     'apps.common',
     'apps.courses',
+    'apps.feedback',
     'apps.optimizer',
     'apps.scraper',
 ]
