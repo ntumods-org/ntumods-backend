@@ -21,14 +21,15 @@ class FeedbackForm(models.Model):
     type = models.CharField(max_length=30, choices=Type.choices)
     title = models.CharField(max_length=100)
     details = models.TextField()
-    creation_time = models.DateTimeField(default=tz.now)
 
     '''
-    Fields for internal use only (modify through admin page):
+    Fields for internal use only:
+    - creation_time: time of creation of the feedback
     - acknowledged: changes to True when feedback is acknowledged
     - resolved: changes to True when feedback is resolved
     - internal_notes: any notes for internal use
     '''
+    creation_time = models.DateTimeField(default=tz.now)
     acknowledged = models.BooleanField(default=False)
     resolved = models.BooleanField(default=False)
     internal_notes = models.TextField(blank=True)

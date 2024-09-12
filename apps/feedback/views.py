@@ -1,7 +1,9 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import generics
+
+from apps.feedback.models import FeedbackForm
+from apps.feedback.serializers import FeedbackFormSerializer
 
 
-class FeedbackView(APIView):
-    def get(self, request):
-        return Response({'message': 'Hello, world!'})
+class FeedbackCreateView(generics.CreateAPIView):
+    queryset = FeedbackForm.objects.all()
+    serializer_class = FeedbackFormSerializer
