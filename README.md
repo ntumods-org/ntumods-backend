@@ -5,49 +5,68 @@
 
 Backend repository for [NTUMods](https://www.ntumods.org), a course schedule planner for Nanyang Technological University students.
 
-## Getting Started
+## Development Guide
 
 This section will guide you through setting up the project on your local machine.
 
-1. Prerequisites: please ensure you have the following installed on your machine:
-    - [Python 3 (>=3.6)](https://www.python.org/downloads/)
-    - [Git](https://git-scm.com/downloads)
+### Prerequisites
+Please ensure you have the following installed on your machine:
+
+- [Python 3 (>=3.6)](https://www.python.org/downloads/)
+- [Git](https://git-scm.com/downloads)
   
-2. Clone the repository and navigate to the project directory:
-    ```bash
-    git clone https://github.com/ntumods-org/ntumods-backend.git
-    cd ntumods-backend
-    ```
+### Cloning the Repository
+Use the following command to clone the repository to your local machine:
+```bash
+git clone https://github.com/ntumods-org/ntumods-backend.git
+cd ntumods-backend
+```
 
-3. Create virtual environment and install dependencies:
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements/development.txt
-    ```
+### Using Virtual Environments
+#### Creating a Virtual Environment
 
-4. Set up environment variables:
-    ```bash
-    cp .env.example .env
-    ```
+```bash
+python3 -m venv venv
+```
 
-5. Run migrations:
-    ```bash
-    python manage.py migrate
-    ```
+#### Activating the Virtual Environment
+##### Linux
+```bash
+source venv/bin/activate
+```
+##### Windows
+```bash
+venv\Scripts\activate
+```
 
-6. Load fixtures (sample data):
-    ```bash
-    python manage.py loaddata sample_data.json
-    ```
-    This should allow you to login with the following credentials:
-    - Username: `superuser`
-    - Password: `123`
+#### Installing Dependencies
+```bash
+pip install -r requirements/development.txt
+```
+
+### Loading Environment Variables
+#### Copy `.env.example` to `.env`
+```bash
+cp .env.example .env
+```
+
+### Running Database Migrations
+```bash
+python manage.py migrate
+```
+
+### Loading Sample Data
+```bash
+python manage.py loaddata sample_data.json
+```
+This should allow you to login as superuser (admin) with the following credentials:
+- Username: `superuser`
+- Password: `123`
   
-7. Run the development server:
-    ```bash
-    python manage.py runserver
-    ```
+### Running the development server
+```bash
+python manage.py runserver
+```
 
 ## Features
 - 📆 Timetable
