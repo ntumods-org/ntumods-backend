@@ -39,6 +39,7 @@ urlpatterns = [
 
     # other apps
     path('courses/', include('apps.courses.urls')),
+    path('feedback/', include('apps.feedback.urls')),
     path('optimizer/', include('apps.optimizer.urls')),
     path('scraper/', include('apps.scraper.urls')),
 ]

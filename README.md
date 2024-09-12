@@ -12,7 +12,7 @@ This section will guide you through setting up the project on your local machine
 ### Prerequisites
 Please ensure you have the following installed on your machine:
 
-- [Python 3 (>=3.6)](https://www.python.org/downloads/)
+- [Python 3.11](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads)
   
 ### Cloning the Repository
