@@ -2271,5 +2271,240 @@
             "schedule": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOXXXXXXOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
             "filtered_information": ""
         }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 1,
+        "fields": {
+            "name": "Mathematical And Computer Sciences Year 1",
+            "value": "MACS;;1;F",
+            "last_updated": "2024-09-13T06:28:31.314Z",
+            "year": 1,
+            "courses": [
+                1,
+                2,
+                3,
+                12
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 2,
+        "fields": {
+            "name": "Mathematical And Computer Sciences Year 2",
+            "value": "MACS;;2;F",
+            "last_updated": "2024-09-13T06:28:31.316Z",
+            "year": 2,
+            "courses": [
+                7,
+                13,
+                15
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 3,
+        "fields": {
+            "name": "Mathematical And Computer Sciences Year 3",
+            "value": "MACS;;3;F",
+            "last_updated": "2024-09-13T06:28:31.318Z",
+            "year": 3,
+            "courses": [
+                6,
+                7,
+                14
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 4,
+        "fields": {
+            "name": "Mathematical And Computer Sciences Year 4",
+            "value": "MACS;;4;F",
+            "last_updated": "2024-09-13T06:28:31.320Z",
+            "year": 4,
+            "courses": [
+                6,
+                7,
+                16
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 5,
+        "fields": {
+            "name": "Mathematical Sciences Year 1",
+            "value": "MATH;;1;F",
+            "last_updated": "2024-09-13T06:28:31.380Z",
+            "year": 1,
+            "courses": [
+                1,
+                2,
+                3,
+                11,
+                19
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 6,
+        "fields": {
+            "name": "Mathematical Sciences Year 2",
+            "value": "MATH;;2;F",
+            "last_updated": "2024-09-13T06:28:31.382Z",
+            "year": 2,
+            "courses": [
+                11
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 7,
+        "fields": {
+            "name": "Mathematical Sciences Year 3",
+            "value": "MATH;;3;F",
+            "last_updated": "2024-09-13T06:28:31.384Z",
+            "year": 3,
+            "courses": [
+                6,
+                7
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 8,
+        "fields": {
+            "name": "Mathematical Sciences Year 4",
+            "value": "MATH;;4;F",
+            "last_updated": "2024-09-13T06:28:31.386Z",
+            "year": 4,
+            "courses": [
+                6,
+                7
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 9,
+        "fields": {
+            "name": "Physics and Applied Physics Year 1",
+            "value": "PHY;;1;F",
+            "last_updated": "2024-09-13T06:28:31.499Z",
+            "year": 1,
+            "courses": [
+                8,
+                9,
+                10,
+                11,
+                19
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 10,
+        "fields": {
+            "name": "Computer Science And Economics Year 1",
+            "value": "CSEC;;1;F",
+            "last_updated": "2024-09-13T06:28:31.773Z",
+            "year": 1,
+            "courses": [
+                4,
+                12,
+                19
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 11,
+        "fields": {
+            "name": "Computer Science And Economics Year 2",
+            "value": "CSEC;;2;F",
+            "last_updated": "2024-09-13T06:28:31.775Z",
+            "year": 2,
+            "courses": [
+                13,
+                15
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 12,
+        "fields": {
+            "name": "Computer Science And Economics Year 3",
+            "value": "CSEC;;3;F",
+            "last_updated": "2024-09-13T06:28:31.777Z",
+            "year": 3,
+            "courses": [
+                14,
+                16
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 13,
+        "fields": {
+            "name": "Computer Science And Economics Year 4",
+            "value": "CSEC;;4;F",
+            "last_updated": "2024-09-13T06:28:31.779Z",
+            "year": 4,
+            "courses": [
+                16
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 14,
+        "fields": {
+            "name": "Computer Science And Economics Year 5",
+            "value": "CSEC;;5;F",
+            "last_updated": "2024-09-13T06:28:31.781Z",
+            "year": 5,
+            "courses": [
+                16
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 15,
+        "fields": {
+            "name": "Environmental Engineering And Economics Year 1",
+            "value": "ENEC;;1;F",
+            "last_updated": "2024-09-13T06:28:31.799Z",
+            "year": 1,
+            "courses": [
+                4,
+                5,
+                19
+            ]
+        }
+    },
+    {
+        "model": "courses.courseprogram",
+        "pk": 16,
+        "fields": {
+            "name": "Information Engineering &amp; Media And Economics Year 1",
+            "value": "IEEC;;1;F",
+            "last_updated": "2024-09-13T06:28:31.809Z",
+            "year": 1,
+            "courses": [
+                4,
+                5,
+                19
+            ]
+        }
     }
 ]
