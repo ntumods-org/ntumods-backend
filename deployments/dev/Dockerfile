@@ -12,9 +12,9 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY requirements /app/requirements
+COPY requirements.txt /app/requirements.txt
 
-RUN pip install --no-cache-dir -r requirements/development.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 

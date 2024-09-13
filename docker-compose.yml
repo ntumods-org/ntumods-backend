@@ -17,7 +17,8 @@ services:
       dockerfile: deployments/dev/Dockerfile
     container_name: ntumods_api
     image: ntumods_api
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
