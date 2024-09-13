@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from apps.common.permissions import IsSuperUser
-from apps.courses.models import Course
+from apps.courses.models import Course, CourseProgram
 from apps.scraper.decorators import custom_swagger_index_schema
 from apps.scraper.utils.course_scraper import perform_course_scraping
 from apps.scraper.utils.detail_scraper import perform_course_detail_scraping
@@ -31,10 +31,11 @@ def get_exam_data(_):
     perform_exam_schedule_scraping()
     return Response('Exam Scraping Completed!')
 
+@custom_swagger_index_schema
 @api_view(['GET'])
 @permission_classes([IsSuperUser])
 def get_program_data(request):
     start_index = request.query_params.get('start_index', 0)
-    end_index = request.query_params.get('end_index', Course.objects.count())
+    end_index = request.query_params.get('end_index', 9999)
     perform_program_scraping(int(start_index), int(end_index))
     return Response('Program Scraping Completed!')
