@@ -8,7 +8,7 @@ steps:
   # Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
-           'asia-southeast1.pkg.dev/${PROJECT_ID}/ntumods/ntumods-backend:latest']
+           'asia-southeast1-docker.pkg.dev/${PROJECT_ID}/ntumods/ntumods-backend:latest']
   # Deploy the Docker image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
