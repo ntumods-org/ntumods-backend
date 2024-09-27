@@ -9,13 +9,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
            'asia-southeast1-docker.pkg.dev/${PROJECT_ID}/ntumods/ntumods-backend:latest']
-  # Deploy the Docker image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args: ['run', 'deploy', 'ntumods-backend', '--image', 'asia-southeast1.pkg.dev/${PROJECT_ID}/ntumods/ntumods-backend:latest', '--region', 'asia-southeast1']
-
-images:
-  - 'asia-southeast1-docker.pkg.dev/${PROJECT_ID}/ntumods/myimage'
 
 options:
   logging: CLOUD_LOGGING_ONLY
