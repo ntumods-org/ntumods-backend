@@ -73,6 +73,8 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://backend.ntumods.org',
+    'https://ntumods.org',
+    'https://www.ntumods.org',
 ]
 
 CORS_ORIGIN_WHITELIST = (
