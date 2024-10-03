@@ -29,14 +29,14 @@ This section will guide you through setting up the project on your local machine
 4. Load sample data
 
     ```bash
-    docker-compose exec -ti ntumods_api python manage.py loaddata sample_data.json
+    docker exec -ti ntumods_api python manage.py loaddata sample_data.json
     ```
 
     If this is the first time you are running the server, please execute this command to load sample data. This should allow you to login as superuser (admin) with the following credentials:
     - Username: `superuser`
     - Password: `123`
 
-    You can execute other utility commands by running `docker-compose exec -ti ntumods_api python manage.py <command>`, such as making migrations, executing tests, etc.
+    You can execute other utility commands by running `docker exec -ti ntumods_api python manage.py <command>`, such as making migrations, executing tests, etc.
 
 ## Development Guide (without Docker)
 
