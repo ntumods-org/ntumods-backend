@@ -17,12 +17,10 @@ services:
       dockerfile: deployments/dev/Dockerfile
     container_name: ntumods_api
     image: ntumods_api
-    command: >
-      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "8080:8080"
     environment:
       - DEBUG=True
       - SQLITE3=False
@@ -34,5 +32,6 @@ services:
       - PGSSLMODE=disable
     depends_on:
       - db
+    restart: always
 volumes:
   db_data:
