@@ -18,6 +18,6 @@ COPY . /app
 
 RUN python manage.py collectstatic --noinput
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
 
-# CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8080", "config.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "config.wsgi:application"]
