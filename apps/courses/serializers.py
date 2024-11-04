@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.courses.models import Course, CourseIndex, CourseProgram
+from apps.courses.models import Course, CourseIndex, CoursePrerequisite, CourseProgram
 
 
 class CoursePartialSerializer(serializers.ModelSerializer):
@@ -76,4 +76,13 @@ class CourseProgramSerializer(serializers.ModelSerializer):
             'name',
             'value',
             'year',
+        ]
+
+
+class CoursePrerequisiteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CoursePrerequisite
+        fields = [
+            'course',
+            'child_nodes',
         ]
