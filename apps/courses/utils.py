@@ -11,7 +11,6 @@ def getPrerequisites():
         "|": "or"
     }
     all_course_codes = list(Course.objects.values_list('code', flat=True))
-    all_course_codes.extend(["SC1003", "SC1004", "SC2000", "SC2001", "SC2002"]) # add this line for testing with sample_data.json
     
     for course in Course.objects.all():
         if course.prerequisite:

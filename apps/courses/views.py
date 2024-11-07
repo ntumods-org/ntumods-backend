@@ -60,7 +60,6 @@ class CoursePrerequisiteDetailView(generics.RetrieveAPIView):
 
     def get_object(self):
         # Populate CoursePrerequisite table if empty
-        CoursePrerequisite.objects.all().delete() #thang-del: delete this line after testing
         if len(CoursePrerequisite.objects.all()) == 0:
             print("Populating CoursePrerequisite table...")
             getPrerequisites()
