@@ -1,5 +1,5 @@
 import re
-from apps.courses.models import Course, CoursePrerequisite
+from apps.courses.models import Course, CoursePrerequisite, PrerequisiteGraph
 
 
 def getPrerequisites():
@@ -11,6 +11,8 @@ def getPrerequisites():
         "|": "or"
     }
     all_course_codes = list(Course.objects.values_list('code', flat=True))
+    all_course_codes.extend(["SC1003", "SC1004", "SC2000", "SC2001", "SC2002"]) # add this line for testing with sample_data.json
+    
     for course in Course.objects.all():
         if course.prerequisite:
             def parse(tokens):
@@ -75,3 +77,59 @@ def getPrerequisites():
                     child_nodes=parsed_prerequisites,
                 )
                 print(f"Created CoursePrerequisite object for {course.code}:\n  {parsed_prerequisites}")
+                
+def dfsPrerequisites(course):
+    '''
+    Depth-first search to find all prerequisites for a given course
+    '''
+    
+    # Helper function to get children of a course
+    # currently only return list of Course objects without the relationship (e.g. 'or', 'and')
+    def getChildren(prerequisites):
+        listOfChildren = []
+        if (isinstance(prerequisites, str)): # only one prerequisite e.g. 'MH1811' -> 'MH1810'
+            child = Course.objects.get(code=prerequisites)
+            listOfChildren.append(child)
+        elif (isinstance(prerequisites, dict)): # have more than one prerequisites
+            for key, value in prerequisites.items():
+                # key is 'or' or 'and' or 'corequisite' or ...
+                # val is list of prerequisites
+                for val in value:
+                    child = None
+                    if (isinstance(val, str)):
+                        child = Course.objects.filter(code=val).first()
+                        if child != None:
+                            listOfChildren.append(child)
+                    elif (isinstance(val, dict)):
+                        child = getChildren(val) # recursive call
+                        for c in child:
+                            listOfChildren.append(c)
+                            
+        return listOfChildren
+    
+    def dfs(node, graph):
+        courseAndPrerequisites = CoursePrerequisite.objects.filter(course=node).first()
+        graph.append({"course": node.code, "prerequisites": courseAndPrerequisites.child_nodes if courseAndPrerequisites != None else None})
+        
+        if courseAndPrerequisites != None:
+            prerequisites = courseAndPrerequisites.child_nodes
+            
+            if prerequisites != None:
+                children = getChildren(prerequisites)
+                for child in children:
+                    dfs(child, graph)
+    
+    graph = []
+    dfs(course, graph)
+    
+    PrerequisiteGraph.objects.create(
+        course=course, 
+        prerequisite_graph=graph
+    )
+
+def makePrerequisiteGraph():
+    '''
+    Utility function to create a graph of prerequisites for each course
+    '''
+    for course in Course.objects.all():
+        dfsPrerequisites(course)

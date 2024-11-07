@@ -227,3 +227,16 @@ class CoursePrerequisite(models.Model):
 
     def __str__(self):
         return f'<CoursePrerequisite for course {self.course.code}: {self.child_nodes}>'
+
+class PrerequisiteGraph(models.Model):
+    '''
+    Stores the prerequisite graph for all courses.
+    '''
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    prerequisite_graph = models.JSONField()
+
+    class Meta:
+        verbose_name_plural = 'Prerequisite Graph'
+
+    def __str__(self):
+        return f'<Prerequisite graph for course {self.course.code}: {self.prerequisite_graph}>'
