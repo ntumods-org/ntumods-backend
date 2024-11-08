@@ -7,6 +7,7 @@ from apps.courses.views import (
     CoursePrefixListView,
     CourseProgramListView,
     CoursePrerequisiteDetailView,
+    CoursePrerequisiteGraphDetailView,
 )
 
 
@@ -19,4 +20,5 @@ urlpatterns = [
     path('prefixes/', CoursePrefixListView.as_view(), name='course-prefix-list'),
     path('programs/', CourseProgramListView.as_view(), name='course-program-list'),
     path('course-prerequisite/<str:code>/', CoursePrerequisiteDetailView.as_view(), name='course-prerequisite-detail'),
+    path('course-prerequisite-graph/<str:code>/', CoursePrerequisiteGraphDetailView.as_view(), name='course-prerequisite-graph-detail'),
 ]

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.courses.models import Course, CourseIndex, CoursePrerequisite, CourseProgram
+from apps.courses.models import Course, CourseIndex, CoursePrerequisite, CourseProgram, PrerequisiteGraph
 
 
 class CoursePartialSerializer(serializers.ModelSerializer):
@@ -85,4 +85,12 @@ class CoursePrerequisiteSerializer(serializers.ModelSerializer):
         fields = [
             'course',
             'child_nodes',
+        ]
+
+class CoursePrerequisiteGraphSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrerequisiteGraph
+        fields = [
+            'course',
+            'prerequisite_graph',
         ]
