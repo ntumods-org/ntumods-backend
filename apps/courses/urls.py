@@ -19,6 +19,6 @@ urlpatterns = [
     path('index/<str:index>/', CourseIndexDetailView.as_view(), name='course-index-detail'),
     path('prefixes/', CoursePrefixListView.as_view(), name='course-prefix-list'),
     path('programs/', CourseProgramListView.as_view(), name='course-program-list'),
-    path('course-prerequisite/<str:code>/', CoursePrerequisiteDetailView.as_view(), name='course-prerequisite-detail'),
-    path('course-prerequisite-graph/<str:code>/', CoursePrerequisiteGraphDetailView.as_view(), name='course-prerequisite-graph-detail'),
+    path('prerequisite/<str:code>/', CoursePrerequisiteDetailView.as_view(), name='course-prerequisite-detail'),
+    path('prerequisite-graph/<str:code>/', CoursePrerequisiteGraphDetailView.as_view(), name='course-prerequisite-graph-detail'),
 ]
