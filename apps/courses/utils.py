@@ -76,7 +76,14 @@ def getPrerequisites():
                     child_nodes=parsed_prerequisites,
                 )
                 print(f"Created CoursePrerequisite object for {course.code}:\n  {parsed_prerequisites}")
-                
+        else:
+            # Create CoursePrerequisite object with no prerequisites
+            CoursePrerequisite.objects.create(
+                course=course,
+                child_nodes=None,
+            )
+            print(f"Created CoursePrerequisite object for {course.code}:\n  None")
+
 def dfsPrerequisites(course):
     '''
     Depth-first search to find all prerequisites for a given course
