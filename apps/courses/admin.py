@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html, format_html_join
 from django.utils.safestring import mark_safe
 
-from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram, CoursePrerequisite
+from apps.courses.models import Course, CourseIndex, CoursePrefix, CourseProgram, CoursePrerequisite, PrerequisiteGraph
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -56,3 +56,4 @@ admin.site.register(CourseIndex, CourseIndexAdmin)
 admin.site.register(CoursePrefix, CoursePrefixAdmin)
 admin.site.register(CourseProgram, CourseProgramAdmin)
 admin.site.register(CoursePrerequisite)
+admin.site.register(PrerequisiteGraph)
