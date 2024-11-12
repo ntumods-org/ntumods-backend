@@ -71,16 +71,16 @@ def getPrerequisites():
 
             if parsed_prerequisites:
                 # Create CoursePrerequisite object
-                CoursePrerequisite.objects.create(
+                CoursePrerequisite.objects.update_or_create(
                     course=course,
                     child_nodes=parsed_prerequisites,
                 )
                 print(f"Created CoursePrerequisite object for {course.code}:\n  {parsed_prerequisites}")
         else:
             # Create CoursePrerequisite object with no prerequisites
-            CoursePrerequisite.objects.create(
+            CoursePrerequisite.objects.update_or_create(
                 course=course,
-                child_nodes=None,
+                child_nodes={},
             )
             print(f"Created CoursePrerequisite object for {course.code}:\n  None")
 
@@ -128,7 +128,7 @@ def dfsPrerequisites(course):
     graph = []
     dfs(course, graph)
     
-    PrerequisiteGraph.objects.create(
+    PrerequisiteGraph.objects.update_or_create(
         course=course, 
         prerequisite_graph=graph
     )
