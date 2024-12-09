@@ -1,13 +1,25 @@
 from rest_framework import serializers
 
-from apps.courses.models import Course, CourseIndex, CourseProgram
+from apps.courses.models import Course, CourseIndex, CourseProgram, CourseSchedule
 
+
+class CourseScheduleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseSchedule
+        fields = [
+            'type',
+            'group',
+            'day',
+            'time',
+            'venue',
+            'remark',
+            'schedule',
+        ]
 
 class CoursePartialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = [
-            'id',
             'code',
             'name',
             'academic_units',
@@ -15,14 +27,15 @@ class CoursePartialSerializer(serializers.ModelSerializer):
 
 
 class CourseIndexSerializer(serializers.ModelSerializer):
+    schedules = CourseScheduleSerializer(many=True, read_only=True)
+
     class Meta:
         model = CourseIndex
         fields = [
-            'id',
             'index',
             'get_information',
             'get_filtered_information',
-            'schedule',
+            'schedules',
         ]
 
 
@@ -34,7 +47,6 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = [
-            'id',
             'code',
             'name',
             'academic_units',
