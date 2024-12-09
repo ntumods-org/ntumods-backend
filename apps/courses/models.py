@@ -58,16 +58,16 @@ class Course(models.Model):
     All of these data are stored as strings, and may not be present for all courses.
     '''
     description = models.TextField(null=True, blank=True)
-    prerequisite = models.CharField(max_length=1000, null=True, blank=True)
-    mutually_exclusive = models.CharField(max_length=1000, null=True, blank=True)
-    not_available = models.CharField(max_length=1000, null=True, blank=True)
-    not_available_all = models.CharField(max_length=1000, null=True, blank=True)
+    prerequisite = models.TextField(null=True, blank=True)
+    mutually_exclusive = models.TextField(null=True, blank=True)
+    not_available = models.TextField(null=True, blank=True)
+    not_available_all = models.TextField(null=True, blank=True)
     offered_as_ue = models.BooleanField(default=True)
     offered_as_bde = models.BooleanField(default=True)
     grade_type = models.CharField(max_length=300, null=True, blank=True)
-    not_offered_as_core_to = models.CharField(max_length=1000, null=True, blank=True)
-    not_offered_as_pe_to = models.CharField(max_length=1000, null=True, blank=True)
-    not_offered_as_bde_ue_to = models.CharField(max_length=1000, null=True, blank=True)
+    not_offered_as_core_to = models.TextField(null=True, blank=True)
+    not_offered_as_pe_to = models.TextField(null=True, blank=True)
+    not_offered_as_bde_ue_to = models.TextField(null=True, blank=True)
     department_maintaining = models.CharField(max_length=50, null=True, blank=True)
     program_list = models.CharField(max_length=1000, null=True, blank=True)
     
