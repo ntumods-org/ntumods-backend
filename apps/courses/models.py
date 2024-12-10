@@ -33,7 +33,7 @@ class Course(models.Model):
     `academic_units` is the number of academic units for the course.
     `last_updated` is the last date and time the Course instance was updated.
     '''
-    code = models.CharField(max_length=6, unique=True)
+    code = models.CharField(max_length=6, unique=True, primary_key=True)
     name = models.CharField(max_length=100)
     academic_units = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     last_updated = models.DateTimeField(auto_now=True)
@@ -58,16 +58,16 @@ class Course(models.Model):
     All of these data are stored as strings, and may not be present for all courses.
     '''
     description = models.TextField(null=True, blank=True)
-    prerequisite = models.CharField(max_length=1000, null=True, blank=True)
-    mutually_exclusive = models.CharField(max_length=1000, null=True, blank=True)
-    not_available = models.CharField(max_length=1000, null=True, blank=True)
-    not_available_all = models.CharField(max_length=1000, null=True, blank=True)
+    prerequisite = models.TextField(null=True, blank=True)
+    mutually_exclusive = models.TextField(null=True, blank=True)
+    not_available = models.TextField(null=True, blank=True)
+    not_available_all = models.TextField(null=True, blank=True)
     offered_as_ue = models.BooleanField(default=True)
     offered_as_bde = models.BooleanField(default=True)
     grade_type = models.CharField(max_length=300, null=True, blank=True)
-    not_offered_as_core_to = models.CharField(max_length=1000, null=True, blank=True)
-    not_offered_as_pe_to = models.CharField(max_length=1000, null=True, blank=True)
-    not_offered_as_bde_ue_to = models.CharField(max_length=1000, null=True, blank=True)
+    not_offered_as_core_to = models.TextField(null=True, blank=True)
+    not_offered_as_pe_to = models.TextField(null=True, blank=True)
+    not_offered_as_bde_ue_to = models.TextField(null=True, blank=True)
     department_maintaining = models.CharField(max_length=50, null=True, blank=True)
     program_list = models.CharField(max_length=1000, null=True, blank=True)
     
@@ -144,10 +144,9 @@ class CourseIndex(models.Model):
     `schedule` stores the weekly schedule of the index, in the following format:
     (S)(S)(S)(S)(S)(S), refer to `common_schedule` in Course model for more details.
     '''
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='indexes')
-    index = models.CharField(max_length=5, unique=True, validators=[validate_index])
-    information = models.TextField(validators=[validate_information])
-    schedule = models.CharField(max_length=192, validators=[validate_weekly_schedule])
+    course_code = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='indexes', to_field='code')
+    index = models.CharField(max_length=5, unique=True, validators=[validate_index], primary_key=True)
+    # schedule = models.CharField(max_length=192)
     
     '''
     Filtered information are `information` that are not common across all indexes of the course.
@@ -182,6 +181,17 @@ class CourseIndex(models.Model):
         return f'<Index {self.index} for course {self.course.code}>'
 
 
+class CourseSchedule(models.Model):
+    index = models.ForeignKey(CourseIndex, on_delete=models.CASCADE, related_name='schedules', to_field='index')
+    type = models.CharField(max_length=200)
+    group = models.CharField(max_length=200)
+    day = models.CharField(max_length=200)
+    time = models.CharField(max_length=200)
+    venue = models.CharField(max_length=200)
+    remark = models.CharField(max_length=200)
+    schedule = models.CharField(max_length=200)
+
+
 class CourseProgram(models.Model):
     '''
     CourseProgram and Course are in a many-to-many relationship.
@@ -206,3 +216,4 @@ class CourseProgram(models.Model):
 
     def __str__(self):
         return f'<CourseProgram #{self.id}: {self.name}>'
+    
