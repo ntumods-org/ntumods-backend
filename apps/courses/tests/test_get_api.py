@@ -68,3 +68,79 @@ class CourseDetailAPITestCase(BaseAPITestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.data['code'], 'MH1100')
         self.assertEqual(resp.data['name'], 'CALCULUS I')
+
+
+class CoursePrerequisiteAPITestCase(BaseAPITestCase):
+    fixtures = ['sample_data.json']
+    ENDPOINT = (lambda _, course_code: reverse('courses:course-prerequisite-detail', kwargs={'code': course_code}))
+    
+    def test_fail_not_found(self):
+        resp = self.client_anonymous.get(self.ENDPOINT('00000'))
+        self.assertEqual(resp.status_code, 404)
+
+    def test_prerequisite_1(self):
+        # MH1811 Prerequisite: MH1810 applicable to AY2017 cohorts onwards
+        resp = self.client_anonymous.get(self.ENDPOINT('MH1811'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data['child_nodes'], 'MH1810')
+    
+    def test_prerequisite_2(self):
+        # SC2207 Prerequisite: SC2006(Corequisite) OR SC1007
+        resp = self.client_anonymous.get(self.ENDPOINT('SC2207'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data['child_nodes'], {
+            "or": [
+                {
+                    "corequisite": "SC2006"
+                },
+                "SC1007"
+            ]
+        })
+
+    def test_prerequisite_3(self):
+        # MH4311 Prerequisite: (MH1200 OR MH1811) & (MH1100 OR MH1810) & MH1300
+        resp = self.client_anonymous.get(self.ENDPOINT('MH4311'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data['child_nodes'], {
+            "and": [
+                { 
+                    "or": [
+                        "MH1200",
+                        "MH1811"
+                    ]
+                },
+                { 
+                    "or": [
+                        "MH1100",
+                        "MH1810"
+                    ]
+                },
+                "MH1300"
+            ]
+        })
+
+    def test_prerequisite_4(self):
+        # MH4320 Prerequisite: (MH1200 & MH1811) OR (MH1100 & (MH1810 & MH1300))
+        resp = self.client_anonymous.get(self.ENDPOINT('MH4320'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data['child_nodes'], {
+            "or": [
+                { 
+                    "and": [
+                        "MH1200",
+                        "MH1811"
+                    ]
+                },
+                { 
+                    "and": [
+                        "MH1100",
+                        { 
+                            "and": [
+                                "MH1810",
+                                "MH1300"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        })
