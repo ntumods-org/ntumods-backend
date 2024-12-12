@@ -64,8 +64,9 @@ class CoursePrerequisiteDetailView(generics.RetrieveAPIView):
             print("Populating CoursePrerequisite table...")
             getPrerequisites()
             print("Completed.")
-        course = Course.objects.get(code=self.kwargs['code'])
+        course = get_object_or_404(Course, code=self.kwargs['code'])
         return get_object_or_404(CoursePrerequisite, course=course)
+
 
 class CoursePrerequisiteGraphDetailView(generics.RetrieveAPIView):
     lookup_field = 'course'
@@ -76,5 +77,5 @@ class CoursePrerequisiteGraphDetailView(generics.RetrieveAPIView):
             print("Populating PrerequisiteGraph table...")
             makePrerequisiteGraph()
             print("Completed.")
-        course = course = Course.objects.get(code=self.kwargs['code'])
+        course = get_object_or_404(Course, code=self.kwargs['code'])
         return get_object_or_404(PrerequisiteGraph, course=course)
