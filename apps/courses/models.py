@@ -90,7 +90,7 @@ class Course(models.Model):
     Common schedule are the occupied time slots that are common in all indexes of the course.
     '''
     exam_schedule = models.CharField(max_length=53, blank=True, validators=[validate_exam_schedule])
-    common_schedule = models.CharField(max_length=192, validators=[validate_weekly_schedule])
+    common_schedule = models.CharField(max_length=192, validators=[validate_weekly_schedule], null=True, blank=True)
 
     '''
     Information that is common across all indexes of the course.
@@ -182,7 +182,7 @@ class CourseIndex(models.Model):
 
 
 class CourseSchedule(models.Model):
-    index = models.ForeignKey(CourseIndex, on_delete=models.CASCADE, related_name='schedules', to_field='index')
+    index = models.ForeignKey(CourseIndex, on_delete=models.CASCADE, related_name='schedules', to_field='index', null=True)
     type = models.CharField(max_length=200)
     group = models.CharField(max_length=200)
     day = models.CharField(max_length=200)
@@ -190,6 +190,7 @@ class CourseSchedule(models.Model):
     venue = models.CharField(max_length=200)
     remark = models.CharField(max_length=200)
     schedule = models.CharField(max_length=200)
+    common_schedule_for_course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='common_schedules', to_field='code', null=True)
 
 
 class CourseProgram(models.Model):

@@ -43,6 +43,7 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
     indexes = CourseIndexSerializer(many=True, read_only=True)
     program_list = serializers.SerializerMethodField()
     prefix = serializers.SerializerMethodField()
+    common_schedules = CourseScheduleSerializer(many=True, read_only=True)
 
     class Meta:
         model = Course
@@ -70,6 +71,7 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
             'not_offered_as_bde_ue_to',
             'department_maintaining',
             'program_list',
+            'common_schedules',
         ]
         
     def get_program_list(self, obj):
