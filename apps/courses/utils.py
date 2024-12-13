@@ -39,6 +39,20 @@ def getPrerequisites():
                         # End of expression, break out of recursive loop
                         break
                     elif token == '&' or token == '|':
+                        # Handle mixed AND/OR logic, e.g. "EE3010 & EE3015 OR EE2005 & EE3015"
+                        if operator and operator != OPERATORS[token]:
+                            nested = parse(tokens)
+                            # Combine parsed nested expression with prerequisites into result
+                            if nested:
+                                result[OPERATORS[token]] = nested
+                                # Check if nested is an expression and if it has the parent operator,
+                                # else parse it as the first expression, and return it
+                                if isinstance(nested, dict) and OPERATORS[token] in nested:
+                                    nested[OPERATORS[token]].append({operator: prerequisites})
+                                    result[OPERATORS[token]] = nested[OPERATORS[token]]
+                                else:
+                                    result[OPERATORS[token]] = [nested, {operator: prerequisites}]
+                                return result
                         # Token is an operator
                         operator = OPERATORS[token]
                     elif token == 'Corequisite':
