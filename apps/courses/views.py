@@ -12,11 +12,11 @@ from apps.courses.serializers import (
 )
 
 class CourseListAllView(generics.ListAPIView):
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by('code')
     serializer_class = CoursePartialSerializer
 
 class CourseListView(CourseQueryParamsMixin, generics.ListAPIView):
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by('code')
     serializer_class = CoursePartialSerializer
 
 
