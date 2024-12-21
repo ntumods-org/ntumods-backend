@@ -65,16 +65,17 @@ class CustomLevelMultipleFilter(BaseFilterBackend):
 
 
 '''
-When query parameter `program_code` is provided, filter courses by program code.
-Allows multiple program codes separated by semicolons, e.g. `program_code=ACC;MH;SC`.
+When query parameter `prefix` is provided, filter courses by program code.
+Allows multiple program codes separated by semicolons, e.g. `prefix=ACC;MH;SC`.
 '''
 class PrefixMultipleFilter(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         program_qp = request.query_params.get('prefix', None)
+        print(program_qp)
         if not program_qp:
             return queryset
         programs = program_qp.split(';')
-        return queryset.filter(prefix__prefix__in=programs)
+        return queryset.filter(prefix__in=programs)
 
 
 '''
