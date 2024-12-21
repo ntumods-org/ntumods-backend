@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
@@ -10,6 +11,7 @@ from apps.courses.serializers import (
     CourseCompleteSerializer,
     CourseProgramSerializer,
 )
+
 
 class CourseListAllView(generics.ListAPIView):
     queryset = Course.objects.all().order_by('code')
@@ -45,3 +47,10 @@ class CoursePrefixListView(generics.GenericAPIView):
 class CourseProgramListView(generics.ListAPIView):
     serializer_class = CourseProgramSerializer
     queryset = CourseProgram.objects.all()
+
+
+class PrefixListView(generics.ListAPIView):
+
+    def get(self, request, *args, **kwargs):
+        distinct_prefixes = Course.objects.filter(prefix__isnull=False).distinct().values_list('prefix', flat=True).order_by('prefix')
+        return JsonResponse({"prefixes": list(distinct_prefixes)})
