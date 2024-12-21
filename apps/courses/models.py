@@ -51,7 +51,7 @@ class Course(models.Model):
     AAA28R -> program_code = 'AAA'; E3102L -> program_code = 'E'.
     '''
     level = models.CharField(max_length=2, null=True, blank=True)
-    prefix = models.ForeignKey(CoursePrefix, on_delete=models.SET_NULL, null=True, blank=True)
+    prefix = models.CharField(max_length=3, null=True, blank=True)
 
     '''
     Additional information: further details about a course.
