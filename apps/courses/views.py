@@ -11,6 +11,9 @@ from apps.courses.serializers import (
     CourseProgramSerializer,
 )
 
+class CourseListAllView(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CoursePartialSerializer
 
 class CourseListView(CourseQueryParamsMixin, generics.ListAPIView):
     queryset = Course.objects.all()
