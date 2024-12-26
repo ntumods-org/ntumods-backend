@@ -71,6 +71,7 @@ class CourseCompleteSerializer(serializers.ModelSerializer):
             'department_maintaining',
             'program_list',
             'common_schedules',
+            'prerequisites_tree',
         ]
         
     def get_program_list(self, obj):

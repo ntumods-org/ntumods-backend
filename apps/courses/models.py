@@ -100,6 +100,8 @@ class Course(models.Model):
     '''
     common_information = models.TextField(null=True, blank=True, validators=[validate_information])
 
+    prerequisites_tree = models.JSONField(null=True, blank=True)
+
     @property
     def get_common_information(self):
         def serialize_info(info):
@@ -217,4 +219,37 @@ class CourseProgram(models.Model):
 
     def __str__(self):
         return f'<CourseProgram #{self.id}: {self.name}>'
-    
+
+
+class CoursePrerequisite(models.Model):
+    '''
+    Stores the prerequisite requirements for a given course.
+    CoursePrerequisite and Course have a one-to-one relationship.
+
+    `course` is the course that the prerequisite belongs to.
+    `child_nodes` is a JSON structure specifying the prerequisite courses required for the `course`.
+    Example:
+    - "MH1810"
+    - {"or": [{"and": ["MH1200", "MH1811"]}, {"and": ["MH1100", {"and": ["MH1810", "MH1300"]}]}]}
+    '''
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    child_nodes = models.JSONField()
+
+    class Meta:
+        verbose_name_plural = 'Course Prerequisites'
+
+    def __str__(self):
+        return f'<CoursePrerequisite for course {self.course.code}: {self.child_nodes}>'
+
+class PrerequisiteGraph(models.Model):
+    '''
+    Stores the prerequisite graph for all courses.
+    '''
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    prerequisite_graph = models.JSONField()
+
+    class Meta:
+        verbose_name_plural = 'Prerequisite Graph'
+
+    def __str__(self):
+        return f'<Prerequisite graph for course {self.course.code}: {self.prerequisite_graph}>'
