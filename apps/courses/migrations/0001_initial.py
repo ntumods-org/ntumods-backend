@@ -17,8 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Course',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(max_length=6, unique=True)),
+                ('code', models.CharField(max_length=6, primary_key=True, serialize=False, unique=True)),
                 ('name', models.CharField(max_length=100)),
                 ('academic_units', models.IntegerField(validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(10)])),
                 ('last_updated', models.DateTimeField(auto_now=True)),

@@ -18,10 +18,6 @@ class Migration(migrations.Migration):
             new_name='course_code',
         ),
         migrations.RemoveField(
-            model_name='course',
-            name='id',
-        ),
-        migrations.RemoveField(
             model_name='courseindex',
             name='id',
         ),
@@ -32,11 +28,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='courseindex',
             name='schedule',
-        ),
-        migrations.AlterField(
-            model_name='course',
-            name='code',
-            field=models.CharField(max_length=6, primary_key=True, serialize=False, unique=True),
         ),
         migrations.AlterField(
             model_name='courseindex',

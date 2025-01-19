@@ -102,6 +102,8 @@ class Course(models.Model):
 
     prerequisites_tree = models.JSONField(null=True, blank=True)
 
+    scraped_for = models.CharField(max_length=100, null=True, blank=True)
+
     @property
     def get_common_information(self):
         def serialize_info(info):
