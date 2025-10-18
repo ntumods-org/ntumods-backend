@@ -79,20 +79,9 @@ class TestCourseScraper(APITestCase):
         self.assertEqual(course_code.academic_units, 3)
         self.assertEqual(course_code.common_schedule, self.get_schedule_str(108, 109, 110, 111, 112, 113))
         course_index = CourseIndex.objects.get(index='39619')
-        self.assertEqual(course_index.course, course_code)
-        self.assertEqual(course_index.schedule, self.get_schedule_str(108, 109, 110, 111, 112, 113))
-        self.assertEqual(course_index.information, "LEC/STUDIO^LE^THU^1330-1620^NIE7-02-07^")
-        self.assertEqual(course_index.get_information, [
-            {
-                "type": "LEC/STUDIO",
-                "group": "LE",
-                "day": "THU",
-                "time": "1330-1620",
-                "venue": "NIE7-02-07",
-                "remark": "",
-            }
-
-        ])
+        self.assertEqual(course_index.course_code, course_code)
+        self.assertEqual(course_index.filtered_information, "")
+        self.assertEqual(course_index.get_filtered_information, [])
 
     def test_course_scraper_2(self):
         raw_data = get_raw_data(self.soup, 4, 4)
@@ -187,10 +176,9 @@ class TestCourseScraper(APITestCase):
         self.assertEqual(course_code.academic_units, 3)
         self.assertEqual(course_code.common_schedule, self.get_schedule_str())
         course_index_1 = CourseIndex.objects.get(index='39621')
-        self.assertEqual(course_index_1.course, course_code)
-        self.assertEqual(course_index_1.schedule, self.get_schedule_str(40, 41, 42, 43, 44, 45))
-        self.assertEqual(course_index_1.information, "LEC/STUDIO^LG1^TUE^1130-1420^NIE3-B1-10^")
-        self.assertEqual(course_index_1.get_information, [
+        self.assertEqual(course_index_1.course_code, course_code)
+        self.assertEqual(course_index_1.filtered_information, "LEC/STUDIO^LG1^TUE^1130-1420^NIE3-B1-10^")
+        self.assertEqual(course_index_1.get_filtered_information, [
             {
                 "type": "LEC/STUDIO",
                 "group": "LG1",
@@ -201,10 +189,9 @@ class TestCourseScraper(APITestCase):
             }
         ])
         course_index_2 = CourseIndex.objects.get(index='39622')
-        self.assertEqual(course_index_2.course, course_code)
-        self.assertEqual(course_index_2.schedule, self.get_schedule_str(72, 73, 74, 75, 76, 77))
-        self.assertEqual(course_index_2.information, "LEC/STUDIO^LG2^WED^1130-1420^NIE-TR319^Teaching Wk1-11,13")
-        self.assertEqual(course_index_2.get_information, [
+        self.assertEqual(course_index_2.course_code, course_code)
+        self.assertEqual(course_index_2.filtered_information, "LEC/STUDIO^LG2^WED^1130-1420^NIE-TR319^Teaching Wk1-11,13")
+        self.assertEqual(course_index_2.get_filtered_information, [
             {
                 "type": "LEC/STUDIO",
                 "group": "LG2",
@@ -215,10 +202,9 @@ class TestCourseScraper(APITestCase):
             }
         ])
         course_index_3 = CourseIndex.objects.get(index='39623')
-        self.assertEqual(course_index_3.course, course_code)
-        self.assertEqual(course_index_3.schedule, self.get_schedule_str(78, 79, 80, 81, 82, 83))
-        self.assertEqual(course_index_3.information, "LEC/STUDIO^LG3^WED^1430-1720^NIE-TR319^Teaching Wk1-11,13")
-        self.assertEqual(course_index_3.get_information, [
+        self.assertEqual(course_index_3.course_code, course_code)
+        self.assertEqual(course_index_3.filtered_information, "LEC/STUDIO^LG3^WED^1430-1720^NIE-TR319^Teaching Wk1-11,13")
+        self.assertEqual(course_index_3.get_filtered_information, [
             {
                 "type": "LEC/STUDIO",
                 "group": "LG3",
@@ -291,24 +277,6 @@ class TestCourseScraper(APITestCase):
         self.assertEqual(course_code.academic_units, 3)
         self.assertEqual(course_code.common_schedule, self.get_schedule_str(78, 79, 80, 81, 104, 105))
         course_index = CourseIndex.objects.get(index='39291')
-        self.assertEqual(course_index.course, course_code)
-        self.assertEqual(course_index.schedule, self.get_schedule_str(78, 79, 80, 81, 104, 105))
-        self.assertEqual(course_index.information, "LEC/STUDIO^LE^THU^1130-1220^NIE3-TR318^;TUT^T^WED^1430-1620^NIE3-TR318^")
-        self.assertEqual(course_index.get_information, [
-            {
-                "type": "LEC/STUDIO",
-                "group": "LE",
-                "day": "THU",
-                "time": "1130-1220",
-                "venue": "NIE3-TR318",
-                "remark": "",
-            },
-            {
-                "type": "TUT",
-                "group": "T",
-                "day": "WED",
-                "time": "1430-1620",
-                "venue": "NIE3-TR318",
-                "remark": "",
-            },
-        ])
+        self.assertEqual(course_index.course_code, course_code)
+        self.assertEqual(course_index.filtered_information, "")
+        self.assertEqual(course_index.get_filtered_information, [])

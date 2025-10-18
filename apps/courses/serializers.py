@@ -33,7 +33,6 @@ class CourseIndexSerializer(serializers.ModelSerializer):
         model = CourseIndex
         fields = [
             'index',
-            'get_information',
             'get_filtered_information',
             'schedules',
         ]
