@@ -121,7 +121,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -157,4 +156,5 @@ cython_debug/
 .idea/
 
 # Visual Studio Code
-.vscode
+config.bat
+node_modules
