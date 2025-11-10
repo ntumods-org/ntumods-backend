@@ -167,11 +167,6 @@ class CourseIndex(models.Model):
             'venue': single_infos[4],
             'remark': single_infos[5],
         }
-
-    @property
-    def get_information(self):
-        return [self.serialize_info(info_group) for info_group in self.information.split(';')] if \
-            self.information else []
     
     @property
     def get_filtered_information(self):
