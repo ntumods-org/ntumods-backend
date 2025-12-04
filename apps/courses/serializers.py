@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.courses.models import Course, CourseIndex, CourseProgram, CourseSchedule
+from apps.courses.models import Course, CourseIndex, CourseProgram, CourseSchedule, CoursePrefix
 
 
 class CourseScheduleSerializer(serializers.ModelSerializer):
@@ -87,4 +87,11 @@ class CourseProgramSerializer(serializers.ModelSerializer):
             'name',
             'value',
             'year',
+        ]
+
+class CoursePrefixSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CoursePrefix
+        fields = [
+            'prefix',
         ]

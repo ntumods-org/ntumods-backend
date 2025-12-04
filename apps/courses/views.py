@@ -10,6 +10,7 @@ from apps.courses.serializers import (
     CourseIndexSerializer,
     CourseCompleteSerializer,
     CourseProgramSerializer,
+    CoursePrefixSerializer,
 )
 
 
@@ -50,6 +51,7 @@ class CourseProgramListView(generics.ListAPIView):
 
 
 class PrefixListView(generics.ListAPIView):
+    serializer_class = CoursePrefixSerializer
 
     def get(self, request, *args, **kwargs):
         distinct_prefixes = Course.objects.filter(prefix__isnull=False).distinct().values_list('prefix', flat=True).order_by('prefix')
