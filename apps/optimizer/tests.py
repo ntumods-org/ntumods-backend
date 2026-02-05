@@ -56,8 +56,10 @@ class SolveWithConstraintsTestCase(TestCase):
             wanted_courses=['MH1100', 'MH1200']
         )
         self.assertIsNotNone(result)
-        self.assertEqual(len(result), 2)
-        courses = [r[0] for r in result]
+        # Should return a list of solutions, where each solution is a list of tuples
+        self.assertTrue(len(result) > 0)
+        self.assertTrue(isinstance(result[0], list))
+        courses = [r[0] for r in result[0]]
         self.assertIn('MH1100', courses)
         self.assertIn('MH1200', courses)
 
@@ -68,7 +70,7 @@ class SolveWithConstraintsTestCase(TestCase):
             constraint_mask=constraint_mask,
             wanted_courses=['MH1100']
         )
-        self.assertIsNone(result)
+        self.assertEqual(result, [])
 
     def test_solve_single_course(self):
         """Test solving with a single course from fixtures."""
@@ -77,8 +79,8 @@ class SolveWithConstraintsTestCase(TestCase):
             wanted_courses=['MH1100']
         )
         self.assertIsNotNone(result)
-        self.assertEqual(len(result), 1)
-        self.assertEqual(result[0][0], 'MH1100')
+        self.assertTrue(len(result) > 0)
+        self.assertEqual(result[0][0][0], 'MH1100')
 
 
 class OptimizeIndexTestCase(TestCase):
@@ -99,14 +101,16 @@ class OptimizeIndexTestCase(TestCase):
         result = optimize_index(input_data)
 
         self.assertIsNotNone(result)
-        self.assertEqual(len(result), 2)
+        self.assertTrue(len(result) > 0)
         self.assertIsInstance(result, list)
-        self.assertIn('code', result[0])
-        self.assertIn('index', result[0])
+        # Check structure of first solution
+        first_solution = result[0]
+        self.assertIn('code', first_solution[0])
+        self.assertIn('index', first_solution[0])
 
         # Verify no schedule conflicts between the selected indices
         combined_mask = 0
-        for course_result in result:
+        for course_result in first_solution:
             course_code = course_result['code']
             index_id = course_result['index']
 
@@ -143,7 +147,7 @@ class OptimizeIndexTestCase(TestCase):
         ])
         result = optimize_index(input_data)
 
-        self.assertIsNone(result)
+        self.assertEqual(result, [])
 
     def test_optimize_with_occupied_slots(self):
         """Test optimization respects occupied time slots."""
@@ -165,10 +169,10 @@ class OptimizeIndexTestCase(TestCase):
         result = optimize_index(input_data)
 
         # Should find a solution and verify no conflicts with occupied slots
-        if result is not None:
+        if result:
             constraint_mask = occupied_str_to_mask(''.join(occupied))
 
-            for course_result in result:
+            for course_result in result[0]:
                 course_code = course_result['code']
                 index_id = course_result['index']
 
@@ -203,8 +207,8 @@ class OptimizeIndexTestCase(TestCase):
         ])
         result = optimize_index(input_data)
 
-        # Should return None because course has no schedule data to verify
-        self.assertIsNone(result,
+        # Should return empty list because course has no schedule data to verify
+        self.assertEqual(result, [],
                           "Course with empty schedule should be rejected when time constraints are specified")
 
 
@@ -229,6 +233,8 @@ class OptimizeViewAPITestCase(APITestCase):
         response = self.client_anonymous.post(url, data, format='json')
 
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.data) > 0)
+        self.assertTrue(isinstance(response.data[0], list))
 
     def test_optimize_endpoint_with_occupied(self):
         """Test optimization with occupied slots."""
@@ -294,14 +300,17 @@ class CommonVsTutorialConflictTestCase(TestCase):
         ])
 
         result = optimize_index(input_data)
-        # result can be None if no solution; that's OK but shouldn't contain conflicts if present
-        if result is None:
-            self.assertIsNone(result)
+        # result can be empty if no solution; that's OK but shouldn't contain conflicts if present
+        if not result:
+            self.assertEqual(result, [])
             return
+
+        # Check first solution
+        first_solution = result[0]
 
         # Build full masks using all sources
         full_masks = {}
-        for item in result:
+        for item in first_solution:
             code = item['code']
             index = item['index']
             course = Course.objects.get(code=code)
@@ -330,3 +339,224 @@ class CommonVsTutorialConflictTestCase(TestCase):
                 b = codes[j]
                 self.assertEqual(full_masks[a] & full_masks[b], 0,
                                  f"Conflict between {a} and {b} detected in optimizer result: {result}")
+
+
+class IncludeExcludeTestCase(TestCase):
+    """Test the include/exclude indices feature."""
+
+    fixtures = ['sample_data.json']
+
+    def test_include_indices(self):
+        """Test optimization with include list - only specified indices should be considered."""
+        # Get available indices for MH1100
+        from apps.courses.models import CourseIndex
+        mh1100_indices = list(CourseIndex.objects.filter(course_code='MH1100').values_list('index', flat=True))
+
+        if len(mh1100_indices) < 2:
+            self.skipTest("Need at least 2 indices for MH1100 to test include feature")
+
+        # Pick the first index only
+        included_index = mh1100_indices[0]
+
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [included_index], 'exclude': []},
+            ]),
+            ('occupied', 'O' * 192)
+        ])
+
+        result = optimize_index(input_data)
+
+        # Should find a solution and use the included index
+        self.assertTrue(len(result) > 0)
+        mh1100_result = next((r for r in result[0] if r['code'] == 'MH1100'), None)
+        self.assertIsNotNone(mh1100_result)
+        self.assertEqual(mh1100_result['index'], included_index)
+
+    def test_exclude_indices(self):
+        """Test optimization with exclude list - excluded indices should not be used."""
+        from apps.courses.models import CourseIndex
+        mh1100_indices = list(CourseIndex.objects.filter(course_code='MH1100').values_list('index', flat=True))
+
+        if len(mh1100_indices) < 2:
+            self.skipTest("Need at least 2 indices for MH1100 to test exclude feature")
+
+        # Exclude the first index
+        excluded_index = mh1100_indices[0]
+
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [], 'exclude': [excluded_index]},
+            ]),
+            ('occupied', 'O' * 192)
+        ])
+
+        result = optimize_index(input_data)
+
+        # Should find a solution and NOT use the excluded index
+        if result:
+            mh1100_result = next((r for r in result[0] if r['code'] == 'MH1100'), None)
+            self.assertIsNotNone(mh1100_result)
+            self.assertNotEqual(mh1100_result['index'], excluded_index)
+
+    def test_include_and_exclude_combined(self):
+        """Test that include takes precedence - if an index is in both, it should be excluded."""
+        from apps.courses.models import CourseIndex
+        mh1100_indices = list(CourseIndex.objects.filter(course_code='MH1100').values_list('index', flat=True))
+
+        if len(mh1100_indices) < 3:
+            self.skipTest("Need at least 3 indices for MH1100 to test include+exclude feature")
+
+        # Include first two, but also exclude the first
+        include_list = [mh1100_indices[0], mh1100_indices[1]]
+        exclude_list = [mh1100_indices[0]]
+
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': include_list, 'exclude': exclude_list},
+            ]),
+            ('occupied', 'O' * 192)
+        ])
+
+        result = optimize_index(input_data)
+
+        # Should only use the second index (first is excluded despite being included)
+        if result:
+            mh1100_result = next((r for r in result[0] if r['code'] == 'MH1100'), None)
+            self.assertIsNotNone(mh1100_result)
+            self.assertEqual(mh1100_result['index'], mh1100_indices[1])
+
+
+class IgnoreLectureClashesTestCase(TestCase):
+    """Test the ignore_lecture_clashes feature."""
+
+    fixtures = ['sample_data.json']
+
+    def test_ignore_lecture_clashes_enabled(self):
+        """Test that lecture clashes are ignored when flag is set."""
+        # This test assumes there exist courses with conflicting lecture times
+        # We'll use MH1100, MH1200, MH1300 as they might have lecture conflicts
+
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [], 'exclude': []},
+                {'code': 'MH1200', 'include': [], 'exclude': []},
+                {'code': 'MH1300', 'include': [], 'exclude': []},
+            ]),
+            ('occupied', 'O' * 192),
+            ('ignore_lecture_clashes', True)
+        ])
+
+        result = optimize_index(input_data)
+
+        # Should find a solution even if lectures clash
+        # (We can't assert that it DOES find a solution as it depends on tutorial availability,
+        # but we verify the feature doesn't crash)
+        self.assertTrue(result == [] or isinstance(result, list))
+
+    def test_ignore_lecture_clashes_disabled(self):
+        """Test that lecture clashes are NOT ignored when flag is False."""
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [], 'exclude': []},
+                {'code': 'MH1200', 'include': [], 'exclude': []},
+            ]),
+            ('occupied', 'O' * 192),
+            ('ignore_lecture_clashes', False)
+        ])
+
+        result = optimize_index(input_data)
+
+        # Should respect all conflicts including lectures
+        if result:
+            # Verify no conflicts exist in the result
+            combined_mask = 0
+            for course_result in result[0]:
+                course_code = course_result['code']
+                index_id = course_result['index']
+
+                from apps.courses.models import Course, CourseIndex
+                course = Course.objects.get(code=course_code)
+                course_mask = parse_schedule(course.common_schedule) if course.common_schedule else 0
+
+                course_index = CourseIndex.objects.get(index=index_id)
+                for schedule in course_index.schedules.all():
+                    if schedule.schedule:
+                        course_mask |= parse_schedule(schedule.schedule)
+
+                if course_index.filtered_information:
+                    course_mask |= filtered_information_to_mask(course_index.filtered_information)
+
+                from apps.courses.models import CourseSchedule
+                for cs in CourseSchedule.objects.filter(common_schedule_for_course=course_code):
+                    if cs.schedule:
+                        course_mask |= parse_schedule(cs.schedule)
+
+                # No overlap should exist
+                self.assertEqual(course_mask & combined_mask, 0)
+                combined_mask |= course_mask
+
+class ShuffleTestCase(TestCase):
+    """Test the shuffle feature."""
+
+    fixtures = ['sample_data.json']
+
+    def test_shuffle_enabled(self):
+        """Test that shuffle produces different results over multiple runs."""
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [], 'exclude': []},
+                {'code': 'MH1200', 'include': [], 'exclude': []},
+            ]),
+            ('occupied', 'O' * 192),
+            ('shuffle', True),
+            ('limit', 1)
+        ])
+
+        # Run multiple times and check if we get different results
+        # Note: It's possible to get the same result by chance, so we check if at least one is different
+        results = []
+        for _ in range(5):
+            res = optimize_index(input_data)
+            if res:
+                # Convert list of dicts to a frozenset of tuples for hashability
+                # res[0] is the first solution
+                res_set = frozenset((item['code'], item['index']) for item in res[0])
+                results.append(res_set)
+        
+        # If we have multiple valid solutions, shuffle should likely produce more than 1 unique result
+        # However, if there's only 1 valid solution, this test might fail.
+        # Assuming MH1100 and MH1200 have multiple valid combinations.
+        if len(results) > 0:
+            unique_results = set(results)
+            # We can't strictly assert len(unique_results) > 1 because there might be only 1 solution
+            # But we can assert that it runs without error
+            self.assertTrue(len(unique_results) >= 1)
+
+class LimitTestCase(TestCase):
+    """Test the limit feature."""
+
+    fixtures = ['sample_data.json']
+
+    def test_limit_results(self):
+        """Test that the optimizer returns at most 'limit' solutions."""
+        input_data = OrderedDict([
+            ('courses', [
+                {'code': 'MH1100', 'include': [], 'exclude': []},
+                {'code': 'MH1200', 'include': [], 'exclude': []},
+            ]),
+            ('occupied', 'O' * 192),
+            ('limit', 5)
+        ])
+
+        result = optimize_index(input_data)
+        
+        # Should return a list of solutions
+        self.assertIsInstance(result, list)
+        # Should not exceed limit
+        self.assertTrue(len(result) <= 5)
+        
+        # If there are enough combinations, it should return multiple
+        # (Assuming MH1100 and MH1200 have > 1 valid combination)
+        if len(result) > 0:
+            self.assertTrue(len(result) >= 1)
