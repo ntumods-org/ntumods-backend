@@ -177,7 +177,7 @@ class CourseIndex(models.Model):
         verbose_name_plural = 'Course Indexes'
 
     def __str__(self):
-        return f'<Index {self.index} for course {self.course.code}>'
+        return f'<Index {self.index} for course {self.course_code}>'
 
 
 class CourseSchedule(models.Model):
