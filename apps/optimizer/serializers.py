@@ -25,3 +25,6 @@ class CourseOptimizerInputSerializer(serializers.Serializer):
 class OptimizerInputSerialzer(serializers.Serializer):
     courses = CourseOptimizerInputSerializer(many=True)
     occupied = serializers.RegexField(regex=r'^[OX]{192}$', required=False)
+    ignore_lecture_clashes = serializers.BooleanField(required=False, default=False)
+    shuffle = serializers.BooleanField(required=False, default=False)
+    limit = serializers.IntegerField(required=False, default=1, min_value=1, max_value=20)
