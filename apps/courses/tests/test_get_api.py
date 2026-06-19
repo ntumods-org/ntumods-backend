@@ -34,11 +34,20 @@ class CourseListAPITestCase(BaseAPITestCase):
         self.assertEqual(resp.data['results'][2]['name'], 'MATHEMATICS 2')
         
     def test_search_icontains_2(self):
-        resp = self.client_anonymous.get(self.ENDPOINT, {'search__icontains': 'MH1201 lin'})
+        # Multi-term search is AND across terms, OR across code/name within each term.
+        # 'sc' matches code SC* and the word SCIENCE; 'intro' matches INTRODUCTION.
+        # Only SC2207 satisfies both.
+        resp = self.client_anonymous.get(self.ENDPOINT, {'search__icontains': 'sc intro'})
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.data['count'], 1)
-        self.assertEqual(resp.data['results'][0]['code'], 'MH1200')
-        self.assertEqual(resp.data['results'][0]['name'], 'LINEAR ALGEBRA I')
+        self.assertEqual(resp.data['results'][0]['code'], 'SC2207')
+        self.assertEqual(resp.data['results'][0]['name'], 'INTRODUCTION TO DATABASES')
+
+    def test_search_icontains_no_match_when_one_term_missing(self):
+        # 'MH1201' matches no course; under AND semantics the whole query returns 0.
+        resp = self.client_anonymous.get(self.ENDPOINT, {'search__icontains': 'MH1201 lin'})
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.data['count'], 0)
 
 
 class CourseIndexDetailAPITestCase(BaseAPITestCase):

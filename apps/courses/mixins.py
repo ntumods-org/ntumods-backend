@@ -1,26 +1,27 @@
+from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import BaseFilterBackend, OrderingFilter
 
 from apps.common.pagination import CustomPagination
-from apps.courses.models import Course, CourseProgram
+from apps.courses.models import CourseProgram
 
 
 '''
 Custom filter backend classes to be used in GenericAPIView classes.
 Accepts query parameter `search__icontains`.
-Search for courses whose code or name contains the search term, separated by spaces.
+Search for courses where every whitespace-separated term appears in either
+the code or the name (AND across terms, OR across fields).
 '''
 class CustomCodeAndNameSearch(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
         search_qp = request.query_params.get('search__icontains', None)
-        if search_qp:
-            ret_queryset = Course.objects.none()
-            for search_term in search_qp.split():
-                ret_queryset |= queryset.filter(
-                    code__icontains=search_term) | queryset.filter(name__icontains=search_term)
-            return ret_queryset
-        else:
+        if not search_qp:
             return queryset
+        for term in search_qp.split():
+            queryset = queryset.filter(
+                Q(code__icontains=term) | Q(name__icontains=term)
+            )
+        return queryset
 
 
 '''
