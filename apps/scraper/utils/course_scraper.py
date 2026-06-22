@@ -232,10 +232,8 @@ def save_course_data(data: List[Dict]) -> None:
         for index in course['indexes']:
             try:
                 CourseIndex.objects.create(
-                    course=course_instance,
+                    course_code=course_instance,
                     index=index['index'],
-                    information=index['information'],
-                    schedule=index['schedule'],
                     filtered_information=index['filtered_information']
                 )
             except IntegrityError:
