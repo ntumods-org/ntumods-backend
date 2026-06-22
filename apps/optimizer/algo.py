@@ -1,5 +1,5 @@
-from collections import OrderedDict
 import random
+from collections import OrderedDict
 
 from apps.courses.models import Course, CourseIndex, CourseSchedule
 
@@ -19,12 +19,7 @@ def occupied_str_to_mask(occupied_str):
     """
     if not occupied_str:
         return 0
-
-    mask = 0
-    for i, char in enumerate(occupied_str):
-        if char == 'X':
-            mask |= (1 << i)
-    return mask
+    return parse_schedule(occupied_str)
 
 
 def time_to_slot_index(time_str):
@@ -71,7 +66,11 @@ def filtered_information_to_mask(filtered_info_str):
         if '-' not in time_range:
             continue
 
-        start_time, end_time = time_range.split('-')
+        time_parts = time_range.split('-')
+        if len(time_parts) != 2:
+            continue
+
+        start_time, end_time = time_parts
         start_slot = time_to_slot_index(start_time)
         end_slot = time_to_slot_index(end_time)
 
