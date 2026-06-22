@@ -1,3 +1,5 @@
+from operator import index
+
 from rest_framework import serializers
 
 from apps.courses.models import Course
@@ -15,11 +17,13 @@ class CourseOptimizerInputSerializer(serializers.Serializer):
         return value
 
     def validate(self, data):
+        course = Course.objects.get(code=data['code'])
+        valid_indexes = set(course.indexes.values_list('index', flat=True))
         # include and exclude list should contain indexes that exist for the course code
-        for li in [data.get('include', []), data.get('exclude', [])]:
-            for index in li:
-                if index not in data['code'].indexes.values_list('index', flat=True):
-                    raise serializers.ValidationError(f'Index `{index}` does not exist for course `{data["code"]}`.')
+        for index in data.get('include', []) + data.get('exclude', []):
+            if index not in valid_indexes:
+                raise serializers.ValidationError(f'Index `{index}` does not exist for course `{data["code"]}`.')
+
         return data
 
 class OptimizerInputSerialzer(serializers.Serializer):
