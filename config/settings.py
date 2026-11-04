@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'apps.courses',
     'apps.feedback',
     'apps.optimizer',
-    'apps.scraper',
 ]
 
 MIDDLEWARE = [
