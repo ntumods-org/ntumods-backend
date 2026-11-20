@@ -179,3 +179,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# HTTPS hardening
+# https://docs.djangoproject.com/en/5.1/topics/security/#ssl-https
+#
+# Session and CSRF cookies are only sent over HTTPS, and browsers are told to
+# keep using HTTPS for this host. All of this is skipped when DEBUG is on so
+# local development over plain http://localhost keeps working.
+
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+if not DEBUG:
+    # TLS is terminated by the Cloud Run proxy in front of gunicorn, which
+    # reports the original scheme in X-Forwarded-Proto. Without this, Django
+    # sees every request as plain HTTP and never emits the HSTS header.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    SECURE_HSTS_SECONDS = int(getenv('SECURE_HSTS_SECONDS', 31536000))
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+    # Redirecting HTTP to HTTPS is opt-in because it depends on how the
+    # deployment is fronted. Set SECURE_SSL_REDIRECT=True where the proxy
+    # forwards plain-HTTP requests to the app instead of redirecting them.
+    SECURE_SSL_REDIRECT = getenv('SECURE_SSL_REDIRECT') == 'True'
